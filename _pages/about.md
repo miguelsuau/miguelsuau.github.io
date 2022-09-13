@@ -10,11 +10,15 @@ redirect_from:
 
 # About me
 
-I am a 4th year PhD candidate at TU Delft supervised by [Frans Oliehoek](https://www.fransoliehoek.net/wp/) and [Matthijs Spaan](https://www.st.ewi.tudelft.nl/mtjspaan/). My research focus is on simulation-based (MA)RL. I am currently interning at JP Morgan AI Research. Before I was an intern at Huawei and Unity.
+I am a 4th year PhD candidate at TU Delft supervised by [Frans Oliehoek](https://www.fransoliehoek.net/wp/) and [Matthijs Spaan](https://www.st.ewi.tudelft.nl/mtjspaan/). 
+
+My research focuses on (Multi-Agent) Reinforcement Learning primarily through simulation. I am interested in partial observability, memory, and probabilistic graphical models.
+
+I am currently interning at JP Morgan AI Research. Before I was an intern at Huawei and Unity.
 
 # Research
 
-### [Distributed Influence-Augmented Local Simulators for Parallel MARL in Large Networked Systems.](https://arxiv.org/abs/2202.01534) 
+### [Distributed Influence-Augmented Local Simulators for Parallel MARL in Large Networked Systems.](https://arxiv.org/abs/2207.00288) 
 M. Suau, J. He, M. M. Çelikok, M. T. J Spaan, F. A. Oliehoek. Preprint.
 ### [Influence-Augmented Local Simulators: A Scalable Solution for Fast Deep RL in Large Networked Systems.](https://proceedings.mlr.press/v162/suau22a.html)
 M. Suau, J. He, M. T. J Spaan, F. A. Oliehoek. **ICML 2022.** 
