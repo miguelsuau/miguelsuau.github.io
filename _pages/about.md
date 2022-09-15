@@ -19,7 +19,7 @@ I am currently interning at JP Morgan AI Research. Before I was an intern at Hua
 # Research
 
 ### [Distributed Influence-Augmented Local Simulators for Parallel MARL in Large Networked Systems.](https://arxiv.org/abs/2207.00288) 
-M. Suau, J. He, M. M. Çelikok, M. T. J Spaan, F. A. Oliehoek. Preprint.
+M. Suau, J. He, M. M. Çelikok, M. T. J Spaan, F. A. Oliehoek. **NeurIPS 2022.**
 ### [Influence-Augmented Local Simulators: A Scalable Solution for Fast Deep RL in Large Networked Systems.](https://proceedings.mlr.press/v162/suau22a.html)
 M. Suau, J. He, M. T. J Spaan, F. A. Oliehoek. **ICML 2022.** 
 ### [Online Planning in POMDPs with Self-Improving Simulators.](https://www.ijcai.org/proceedings/2022/0642) 
@@ -27,7 +27,6 @@ J. He, M. Suau, H. Baier, M. Kaisers, F. A. Oliehoek. **IJCAI 2022.**
 ### [Speeding up Deep RL through Influence-augmented Local Simulators.](https://dl.acm.org/doi/abs/10.5555/3535850.3536093) 
 M. Suau, J. He, M. T. J. Spaan, F. A. Oliehoek. **AAMAS 2022.**
 ### [Influence-aware Memory Architectures for Deep Reinforcement Learning in POMDPs.](https://link.springer.com/article/10.1007/s00521-022-07691-7) 
-M. Suau, E. Congeduti, J. He, R.A.N. Starre, A. Czechowski, F. A. Oliehoek. **NCAA 2022**.
-
+M. Suau, E. Congeduti, J. He, R.A.N. Starre, A. Czechowski, F. A. Oliehoek. **NCAA 2022.**
 ### [Influence-augmented Online Planning for Complex Environments.](https://proceedings.neurips.cc/paper/2020/hash/2e6d9c6052e99fcdfa61d9b9da273ca2-Abstract.html) 
 J. He, M. Suau, F.A. Oliehoek. **NeurIPS 2020.**
