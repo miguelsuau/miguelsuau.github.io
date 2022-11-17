@@ -12,7 +12,7 @@ redirect_from:
 
 I am a 4th year PhD candidate at TU Delft supervised by [Frans Oliehoek](https://www.fransoliehoek.net/wp/) and [Matthijs Spaan](https://www.st.ewi.tudelft.nl/mtjspaan/). 
 
-My research focuses on (Multi-Agent) Reinforcement Learning. In my work, I investigate how to abstract/factor the agent(s)'s state and action spaces to enable more effective learning and optimize runtime. I am interested in partial observability, memory, and probabilistic graphical models.
+My research focuses on (Multi-Agent) Reinforcement Learning. In my work, I investigate how to abstract/factorize the agent(s)'s state and action spaces to enable more effective learning and optimize runtime. I am interested in partial observability, memory, and probabilistic graphical models.
 
 I am currently interning at JP Morgan AI Research. Before I was an intern at Huawei and I also worked as a data scientist at Unity.
 
