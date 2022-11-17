@@ -30,3 +30,18 @@ M. Suau, J. He, M. T. J. Spaan, F. A. Oliehoek. **AAMAS 2022.**
 M. Suau, E. Congeduti, J. He, R.A.N. Starre, A. Czechowski, F. A. Oliehoek. **NCAA 2022.**
 ### [Influence-augmented Online Planning for Complex Environments.](https://proceedings.neurips.cc/paper/2020/hash/2e6d9c6052e99fcdfa61d9b9da273ca2-Abstract.html) 
 J. He, M. Suau, F.A. Oliehoek. **NeurIPS 2020.**
+
+# Selected Talks
+
+### Berkeley Multi-Agent Learning Seminar: [Scaling up MARL: Distributed Simulation of Large Networked Systems](https://youtu.be/jaiqHnx17V8)
+### ICML 2022 (Baltimore): [Influence-Augmented Local Simulators](https://icml.cc/virtual/2022/spotlight/18116)
+### CIG 2022 (Maastricht): [Unity ML Agents Tutorial](https://project.dke.maastrichtuniversity.nl/cig2018/conducting-machine-learning-research-within-custom-made-3d-game-environments/)
+
+# Teaching and Service
+
+### (2019-2022)  Lecturer:  Deep Learning - Computational Intelligence
+### Reviewing:
+* ICML 2021, 2022 (received reviewing award).
+* Neurips 2021, 2022 (received reviewing award).
+* ICLR 2021, 2022.
+* AAMAS 2022.
