@@ -49,6 +49,6 @@ J. He, M. Suau, F.A. Oliehoek. **NeurIPS 2020.**
 
 ### Reviewing:
 * ICML 2021, 2022 (received reviewing award).
-* Neurips 2021, 2022 (received reviewing award).
+* NeurIPS 2021, 2022 (received reviewing award).
 * ICLR 2021, 2022.
 * AAMAS 2022.
