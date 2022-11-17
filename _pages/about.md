@@ -31,7 +31,7 @@ M. Suau, E. Congeduti, J. He, R.A.N. Starre, A. Czechowski, F. A. Oliehoek. **NC
 ### [Influence-augmented Online Planning for Complex Environments.](https://proceedings.neurips.cc/paper/2020/hash/2e6d9c6052e99fcdfa61d9b9da273ca2-Abstract.html) 
 J. He, M. Suau, F.A. Oliehoek. **NeurIPS 2020.**
 
-# Selected Talks
+# Selected talks
 
 * Berkeley MARL Seminar 2022 (online) - [Scaling up MARL: Distributed Simulation of Large Networked Systems](https://youtu.be/jaiqHnx17V8).
 * ICML 2022 (Baltimore) - [Influence-Augmented Local Simulators](https://icml.cc/virtual/2022/spotlight/18116).
