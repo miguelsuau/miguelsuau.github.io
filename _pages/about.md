@@ -28,6 +28,8 @@ J. He, M. Suau, H. Baier, M. Kaisers, F. A. Oliehoek. **IJCAI 2022.**
 M. Suau, J. He, M. T. J. Spaan, F. A. Oliehoek. **AAMAS 2022.**
 ### [Influence-aware Memory Architectures for Deep Reinforcement Learning in POMDPs.](https://link.springer.com/article/10.1007/s00521-022-07691-7) 
 M. Suau, E. Congeduti, J. He, R.A.N. Starre, A. Czechowski, F. A. Oliehoek. **NCAA 2022.**
+### [Offline Contextual Bandits for Wireless Network Optimization](https://offline-rl-neurips.github.io/2021/pdf/18.pdf)
+M. Suau, A. Agapitos, D. Lynch, D. Farrell, M. Zhou, A. Milenovic. **Offline RL workshop, NeurIPS 2021.**
 ### [Influence-augmented Online Planning for Complex Environments.](https://proceedings.neurips.cc/paper/2020/hash/2e6d9c6052e99fcdfa61d9b9da273ca2-Abstract.html) 
 J. He, M. Suau, F.A. Oliehoek. **NeurIPS 2020.**
 
