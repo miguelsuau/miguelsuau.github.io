@@ -12,12 +12,13 @@ redirect_from:
 
 I am a PhD candidate at TU Delft with [Frans Oliehoek](https://www.fransoliehoek.net/wp/) and [Matthijs Spaan](https://www.st.ewi.tudelft.nl/mtjspaan/). 
 
-My research focuses on (Multi-Agent) Reinforcement Learning through probabilistic graphical models. I investigate how to abstract (factorize) the agent(s)'s state space to enable more effective learning and optimize runtime. I am also interested in causality, generalization, partial observability, and memory.
+My research focuses on (Multi-Agent) Reinforcement Learning with a focus on factored representations. I investigate how to abstract (factorize) the agent(s)'s state space to enable more effective learning and optimize runtime. I am also interested in causality, generalization, partial observability, and memory.
 
 Last year I was an intern at JP Morgan AI Research in London. In 2021, I interned at Huawei Ireland Research Center. Before joining my PhD program, I worked as a data scientist at Unity in Copenhagen.
 
 # Research
-
+### [Bad Habits: Policy Confounding and Out-of-Trajectory Generalization in RL.](https://arxiv.org/abs/2306.02419) 
+M. Suau, M. T. J Spaan, F. A. Oliehoek. **Preprint.**
 ### [Distributed Influence-Augmented Local Simulators for Parallel MARL in Large Networked Systems.](https://arxiv.org/abs/2207.00288) 
 M. Suau, J. He, M. M. Çelikok, M. T. J Spaan, F. A. Oliehoek. **NeurIPS 2022.**
 ### [Influence-Augmented Local Simulators: A Scalable Solution for Fast Deep RL in Large Networked Systems.](https://proceedings.mlr.press/v162/suau22a.html)
