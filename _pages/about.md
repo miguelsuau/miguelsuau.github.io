@@ -10,15 +10,15 @@ redirect_from:
 
 # About me
 
-I am a PhD candidate at TU Delft with [Frans Oliehoek](https://www.fransoliehoek.net/wp/) and [Matthijs Spaan](https://www.st.ewi.tudelft.nl/mtjspaan/). 
+I am a research scientist at Phaidra, where I focus on modeling and optimization of industrial systems.
 
-My research focuses on (Multi-Agent) Reinforcement Learning with a focus on factored representations. I investigate how to abstract (factorize) the agent(s)'s state space to enable more effective learning and optimize runtime. I am also interested in causality, generalization, partial observability, and memory.
-
-Last year I was an intern at JP Morgan AI Research in London. In 2021, I interned at Huawei Ireland Research Center. Before joining my PhD program, I worked as a data scientist at Unity in Copenhagen.
+Before joining Phaidra, I completed my PhD in Artificial Intelligence at TU Delft, where I worked with [Frans Oliehoek](https://www.fransoliehoek.net/wp/) and [Matthijs Spaan](https://www.st.ewi.tudelft.nl/mtjspaan/). During my PhD, I specialized in (Multi-Agent) Reinforcement Learning, investigating how to abstract (factorize) the agent(s)' state space to enable more effective learning and optimize runtime. I am also interested in causality, generalization, partial observability, and memory.
 
 # Research
 ### [Bad Habits: Policy Confounding and Out-of-Trajectory Generalization in RL.](https://arxiv.org/abs/2306.02419) 
-M. Suau, M. T. J Spaan, F. A. Oliehoek. **Preprint.**
+M. Suau, M. T. J Spaan, F. A. Oliehoek. **RLC 2024.**
+### [Leveraging Factored State Representations for Enhanced Efficiency in Reinforcement Learning.](https://repository.tudelft.nl/islandora/object/uuid%3Ae19a0363-d9cf-4f33-8936-757c268f27a1)
+M.Suau. **Ph.D. Thesis 2024.**
 ### [Distributed Influence-Augmented Local Simulators for Parallel MARL in Large Networked Systems.](https://arxiv.org/abs/2207.00288) 
 M. Suau, J. He, M. M. Çelikok, M. T. J Spaan, F. A. Oliehoek. **NeurIPS 2022.**
 ### [Influence-Augmented Local Simulators: A Scalable Solution for Fast Deep RL in Large Networked Systems.](https://proceedings.mlr.press/v162/suau22a.html)
@@ -43,15 +43,19 @@ J. He, M. Suau, F.A. Oliehoek. **NeurIPS 2020.**
 # Service
 
 ### Teaching:
-* From 2020 to 2022 I gave a series of lectures on Deep Learning at the Computational Intelligence course (CSE2530) at TU Delft.
+* CSE2530, Computational Intelligence, TU Delft, 2021-2022
+* CSE2530, Computational Intelligence, TU Delft, 2020-2021
+* CSE2530, Computational Intelligence, TU Delft, 2019-2020
 
-### Supervising:
-* I Supervised three Bachelor's and two Master's thesis:
-  
-  * Nele Albers, Deniz Hofmeister, Sven Holtrop, Lucas Crijns, Cian Jansen. 
+### Supervision:
+* Honours Project: Sven Holtrop, Lucas Crijns (2020)
+* Master thesis: Nele Albers (2019) 
+* Bachelor's Thesis: Cian Jansen (2019)
+* Master thesis: Deniz Hofmeister (2018) 
 
 ### Reviewing:
-* ICML 2021, 2022 (received reviewing award).
-* NeurIPS 2021, 2022 (received reviewing award).
-* ICLR 2021, 2022.
+* ICML 2021, 2022 (top reviewer), 2023.
+* NeurIPS 2021, 2022 (top reviewer), 2023 (top reviewer).
+* ICLR 2021, 2022, 2023.
+* RLC 2024
 * AAMAS 2022.
