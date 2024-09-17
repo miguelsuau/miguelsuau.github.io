@@ -15,10 +15,11 @@ I am a research scientist at [Phaidra](https://www.phaidra.ai/), where I focus o
 Before joining Phaidra, I completed my PhD in Artificial Intelligence at TU Delft, where I worked with [Frans Oliehoek](https://www.fransoliehoek.net/wp/) and [Matthijs Spaan](https://www.st.ewi.tudelft.nl/mtjspaan/). During my PhD, I specialized in (Multi-Agent) Reinforcement Learning, investigating how to abstract (factorize) the agent(s)' state space to enable more effective learning and optimize runtime. I am also interested in causality, generalization, partial observability, and memory.
 
 # Research
-### [Bad Habits: Policy Confounding and Out-of-Trajectory Generalization in RL.](https://arxiv.org/abs/2306.02419) 
-M. Suau, M. T. J Spaan, F. A. Oliehoek. **RLC 2024.**
+### [Bad Habits: Policy Confounding and Out-of-Trajectory Generalization in RL.](https://rlj.cs.umass.edu/2024/papers/Paper216.html) 
+M. Suau, M. T. J Spaan, F. A. Oliehoek. **RLC 2024. 
+Outstanding Paper Award on Scientific Understanding in RL.**
 ### [Leveraging Factored State Representations for Enhanced Efficiency in Reinforcement Learning.](https://repository.tudelft.nl/islandora/object/uuid%3Ae19a0363-d9cf-4f33-8936-757c268f27a1)
-M.Suau. **Ph.D. Thesis 2024.**
+M.Suau. **Delft University of Technology. Ph.D. Thesis 2024.**
 ### [Distributed Influence-Augmented Local Simulators for Parallel MARL in Large Networked Systems.](https://arxiv.org/abs/2207.00288) 
 M. Suau, J. He, M. M. Çelikok, M. T. J Spaan, F. A. Oliehoek. **NeurIPS 2022.**
 ### [Influence-Augmented Local Simulators: A Scalable Solution for Fast Deep RL in Large Networked Systems.](https://proceedings.mlr.press/v162/suau22a.html)
