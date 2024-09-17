@@ -37,6 +37,7 @@ J. He, M. Suau, F.A. Oliehoek. **NeurIPS 2020.**
 
 # Selected talks
 
+* RLC 2024 (Amherst) - Bad Habits: Policy Confounding and Out of Trajectory Generalization
 * Berkeley MARL Seminar 2022 (online) - [Scaling up MARL: Distributed Simulation of Large Networked Systems](https://youtu.be/jaiqHnx17V8).
 * ICML 2022 (Baltimore) - [Influence-Augmented Local Simulators](https://icml.cc/virtual/2022/spotlight/18116).
 * CIG 2018 (Maastricht) - [Unity ML Agents Tutorial](https://project.dke.maastrichtuniversity.nl/cig2018/.conducting-machine-learning-research-within-custom-made-3d-game-environments/).
