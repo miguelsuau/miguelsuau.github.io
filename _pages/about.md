@@ -10,11 +10,13 @@ redirect_from:
 
 # About me
 
-I am a senior research scientist at [Phaidra](https://www.phaidra.ai/), where I serve as the technical lead of the research team. My work focuses on modeling and optimizing industrial systems. 
+I am the Research Lead at [Phaidra](https://www.phaidra.ai/). Our team focuses on modeling and optimizing industrial systems. 
 
 Before joining Phaidra, I completed my PhD in Artificial Intelligence at TU Delft, where I worked with [Frans Oliehoek](https://www.fransoliehoek.net/wp/) and [Matthijs Spaan](https://www.st.ewi.tudelft.nl/mtjspaan/). During my PhD, I specialized in (Multi-Agent) Reinforcement Learning, investigating how to abstract (factorize) the agent(s)' state space to enable more effective learning and optimize runtime. I am also interested in causality, generalization, partial observability, and memory.
 
 # Research
+### [Breaking Habits: On the Role of the Advantage Function in Learning Causal State Representations](https://arxiv.org/abs/2506.11912)
+M. Suau. **Preprint. Presented at RLDM 2025**
 ### [Bad Habits: Policy Confounding and Out-of-Trajectory Generalization in RL.](https://rlj.cs.umass.edu/2024/papers/Paper216.html) 
 M. Suau, M. T. J Spaan, F. A. Oliehoek. **RLC 2024. 
 Outstanding Paper Award on Scientific Understanding in RL.**
@@ -36,7 +38,8 @@ M. Suau, A. Agapitos, D. Lynch, D. Farrell, M. Zhou, A. Milenovic. **Offline RL 
 J. He, M. Suau, F.A. Oliehoek. **NeurIPS 2020.**
 
 # Selected talks
-
+* Cohere Labs 2025 - [Policy Confounding: Causes, Consequences, and Corrections](https://youtu.be/FPk31E86c6Q?si=DPueja2tkL6nlZ3f).
+* EWRL 2025 (Tubingen) - Policy Confounding: Causes, Consequences, and Corrections.
 * RLC 2024 (Amherst) - Bad Habits: Policy Confounding and Out of Trajectory Generalization
 * Berkeley MARL Seminar 2022 (online) - [Scaling up MARL: Distributed Simulation of Large Networked Systems](https://youtu.be/jaiqHnx17V8).
 * ICML 2022 (Baltimore) - [Influence-Augmented Local Simulators](https://icml.cc/virtual/2022/spotlight/18116).
@@ -57,7 +60,7 @@ J. He, M. Suau, F.A. Oliehoek. **NeurIPS 2020.**
 
 ### Reviewing:
 * ICML 2021, 2022 (top reviewer), 2023.
-* NeurIPS 2021, 2022 (top reviewer), 2023 (top reviewer).
+* NeurIPS 2021, 2022 (top reviewer), 2023 (top reviewer), 2025 (top reviewer).
 * ICLR 2021, 2022, 2023.
 * RLC 2024
 * AAMAS 2022.
