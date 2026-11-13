@@ -1,0 +1,123 @@
+/* A personal home page, circa 1996. No web fonts or JavaScript required. */
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-padding-top: 14px; }
+body { margin: 0; padding: 24px 16px 32px; background: #bfbfbf; color: #111; font: 17px/1.45 "Times New Roman", Times, serif; }
+a { color: #0000b8; text-decoration: underline; text-underline-offset: 2px; }
+a:visited { color: #551a8b; }
+a:hover { color: #b00020; }
+a:focus-visible { outline: 3px dotted #b00020; outline-offset: 4px; }
+.skip-link { position: absolute; left: 16px; top: -80px; padding: 8px; z-index: 2; background: #ffffa0; }
+.skip-link:focus { top: 8px; }
+.homepage { max-width: 1000px; margin: 0 auto; }
+.welcome-strip { margin-bottom: 9px; text-align: center; font-weight: bold; font-size: 16px; }
+.space-banner { position: relative; overflow: hidden; min-height: 200px; padding: 24px 130px 21px; border: 4px ridge #eee; text-align: center; background: #000018 url("../../images/retro-stars.svg") repeat; color: #fff; }
+.eyebrow { margin: 0 0 1px; color: #ffff74; font: bold 12px/1.6 "Courier New", monospace; letter-spacing: 3px; }
+.wordmark { position: relative; display: inline-block; color: #6dffff; font-size: clamp(48px, 6.5vw, 76px); font-weight: bold; font-style: italic; line-height: 1.15; letter-spacing: -3px; text-shadow: 2px 2px #005174, 4px 4px #000, 5px 5px #888; }
+@supports (background-clip: text) { .wordmark { background: linear-gradient(#fff 5%, #70fcff 35%, #00aaa9 49%, #003d78 51%, #39efff 75%, #fff 94%); background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-stroke: .5px #91ffff; text-shadow: none; filter: drop-shadow(3px 4px 0 #003d78); } }
+.wordmark-star { display: inline-block; margin-left: 8px; color: #ffff00; -webkit-text-stroke: 0; font-size: 35px; vertical-align: top; }
+.banner-caption { margin: 12px 0 0; font-size: 16px; color: #fff; }
+.banner-caption span { margin: 0 8px; color: #ffff00; }
+.planet { position: absolute; pointer-events: none; }
+.planet-left { left: 29px; top: 48px; transform: rotate(-14deg); }
+.planet-right { right: 48px; top: 56px; }
+.directory { margin: 10px 0 18px; padding: 9px 8px; border: 3px outset #ffffaa; background: #ffff00; text-align: center; font-weight: bold; font-size: 17px; }
+.directory > span { margin: 0 11px; color: #777000; font-weight: normal; }
+.file-type { font: 10px "Courier New", monospace; }
+.page-columns { display: grid; grid-template-columns: 212px minmax(0, 1fr); gap: 20px; align-items: start; }
+.profile { border: 3px outset #eee; background: #c0c0c0; text-align: center; }
+.panel-heading { background: #000080; color: #fff; padding: 5px 8px; font-size: 15px; font-weight: bold; }
+.profile-inner { padding: 16px 12px 8px; }
+.photo-frame { display: inline-block; padding: 4px; border: 3px inset #e2e2e2; background: #999; line-height: 0; }
+.portrait { display: block; width: 156px; height: auto; }
+.avatar-sprite { width: 156px; aspect-ratio: 3 / 8; background-size: 400% 100%; background-repeat: no-repeat; background-position: 0 0; image-rendering: pixelated; }
+.avatar-sprite[data-pose="1"] { background-position-x: 33.333333%; }
+.avatar-sprite[data-pose="2"] { background-position-x: 66.666667%; }
+.avatar-sprite[data-pose="3"] { background-position-x: 100%; }
+.avatar-button { margin: 9px auto 0; padding: 4px 14px; border: 2px outset #eee; background: #c0c0c0; color: #000080; font: 14px "Times New Roman", Times, serif; cursor: pointer; }
+.avatar-button:not([hidden]) { display: block; }
+.avatar-button:active { border-style: inset; }
+.avatar-button:focus-visible { outline: 2px dotted #000080; outline-offset: 3px; }
+.profile h2 { margin: 12px -4px 4px; font-size: 21px; }
+.bio { margin: 0 0 8px; font-size: 16px; }
+.location { margin: 0 0 16px; font-size: 14px; font-style: italic; }
+hr { height: 2px; border: 0; border-top: 1px solid #808080; border-bottom: 1px solid #fff; }
+.links-heading { margin: 16px 0 9px; font-size: 16px; }
+.profile-links { margin: 0; padding: 0 2px; list-style: none; text-align: left; font-size: 16px; }
+.profile-links li { margin: 8px 0; }
+.profile-links span { display: inline-block; width: 22px; color: #000080; text-align: center; }
+.web-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; padding: 12px 4px 0; }
+.web-badge { display: flex; width: 88px; height: 31px; flex-direction: column; justify-content: center; border: 2px outset #ddd; font-family: "Courier New", monospace; text-decoration: none; line-height: 1; }
+.web-badge b { font-size: 15px; }
+.web-badge small { margin-top: 3px; font-size: 8px; font-weight: bold; }
+.badge-www { background: #000080; color: #ffff00; }
+.badge-mail, .badge-mail:visited { color: #000; background: #eee; }
+.sidebar-note { margin: 15px 3px; font-size: 13px; font-style: italic; }
+.content { min-width: 0; padding: 0 0 10px; }
+.content > h1 { clear: both; scroll-margin-top: 14px; margin: 28px 0 17px; padding: 4px 11px; border: 3px outset #ffffa0; background: #ffff00; font-size: 23px; line-height: 1.25; }
+.content > h1:first-child { margin-top: 0; }
+.content > h1::before { content: "✦ "; color: #000080; font-size: 18px; }
+.content p { margin: 0 7px 17px; }
+.content > h3 { margin: 20px 7px 5px; font-size: 18px; line-height: 1.3; }
+.content > h3 + p { font-size: 15px; }
+.content > h3 + p strong { font-weight: normal; font-style: italic; }
+.content > h3 ~ h3 { padding-top: 15px; border-top: 1px dotted #888; }
+.content > h1 ~ h3:not(:has(a)) { border: 0; padding-top: 0; font-size: 19px; }
+.content ul { padding-left: 27px; margin: 0 7px 22px; }
+.content li { padding-left: 2px; margin: 7px 0; }
+.back-to-top { margin-top: 24px !important; text-align: right; font-size: 14px; }
+.site-footer { margin-top: 18px; text-align: center; font-size: 14px; }
+.site-footer p { margin: 11px 0; }
+.site-footer p:first-of-type { font-weight: bold; }
+.site-footer p:first-of-type span { color: #000080; }
+.footer-small { font-size: 12px; }
+.research-directory { margin: 0 7px 14px; font-size: 14px; }
+.research-directory + h1 { margin-top: 0; }
+.landing-page { min-height: 100svh; display: grid; place-items: center; padding: 24px 16px; }
+.entrance { width: min(100%, 620px); text-align: center; }
+.entrance-space { padding: 18px 20px 4px; border: 4px ridge #eee; background: #000018 url("../../images/retro-stars.svg") repeat; }
+.entrance .wordmark { margin: 0 0 5px; font-size: clamp(46px, 7vw, 66px); }
+.entrance-avatar { width: 156px; min-height: 416px; margin: 0 auto; }
+.entrance-avatar .portrait { width: 156px; }
+.entrance-directory { margin: 10px 0 0; padding: 12px; font-size: 21px; }
+.entrance-directory > span { margin: 0 22px; }
+.retro-social { display: flex; flex-wrap: wrap; gap: 14px 23px; justify-content: center; margin: 21px 0 0; padding: 0; list-style: none; }
+.retro-social a { display: flex; flex-direction: column; align-items: center; gap: 5px; font-size: 13px; }
+.retro-social svg { width: 32px; height: 32px; image-rendering: pixelated; filter: drop-shadow(1px 1px 0 #fff); }
+@media (max-width: 700px) {
+  body { padding: 14px 12px 24px; font-size: 17px; }
+  .space-banner { min-height: 176px; padding: 23px 45px; }
+  .eyebrow { font-size: 9px; letter-spacing: 2px; }
+  .wordmark { font-size: 46px; }
+  .wordmark-star { position: absolute; right: -23px; top: 0; font-size: 22px; margin-left: 0; }
+  .banner-caption { font-size: 14px; }
+  .planet-left { width: 62px; height: auto; left: -8px; top: 65px; }
+  .planet-right { width: 42px; height: auto; right: -5px; top: 60px; }
+  .directory { line-height: 1.9; margin-bottom: 14px; font-size: 16px; }
+  .directory > span { margin: 0 5px; }
+  .page-columns { grid-template-columns: 1fr; gap: 20px; }
+  .profile-inner { display: flow-root; padding: 13px; text-align: left; }
+  .photo-frame { float: left; margin: 0 16px 8px 0; }
+  .portrait { width: 104px; height: auto; }
+  .avatar-sprite { width: 104px; }
+  .avatar-button:not([hidden]) { display: inline-block; margin: 0 0 10px; }
+  .profile h2 { margin: 0 0 4px; font-size: 21px; }
+  .bio { margin-bottom: 4px; }
+  .location { margin-bottom: 8px; }
+  .profile hr { clear: both; }
+  .links-heading { margin: 10px 0 7px; }
+  .profile-links { display: flex; flex-wrap: wrap; gap: 3px 15px; }
+  .profile-links li { margin: 3px 0; }
+  .web-badges, .sidebar-note { display: none; }
+  .content > h1 { font-size: 22px; }
+  .entrance-space { padding-top: 24px; }
+  .entrance .wordmark { font-size: 46px; }
+  .entrance-avatar { width: 126px; min-height: 336px; }
+  .entrance-avatar .avatar-sprite, .entrance-avatar .portrait { width: 126px; }
+  .entrance-directory { font-size: 20px; }
+  .entrance-directory > span { margin: 0 10px; }
+  .retro-social { gap: 14px 18px; }
+}
+@media (max-width: 380px) { .wordmark { font-size: 44px; } .banner-caption { font-size: 12px; } }
+@media print { body { background: #fff; padding: 0; } .space-banner, .welcome-strip, .directory, .profile, .site-footer, .back-to-top { display: none; } .page-columns { display: block; } .content > h1 { background: none; border: 0; padding-left: 0; } a, a:visited { color: #000; } }
