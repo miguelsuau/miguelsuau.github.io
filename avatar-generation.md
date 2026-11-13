@@ -1,8 +1,16 @@
 # Avatar generation
 
+The live scene uses local Three.js modules in `assets/js/voxel-avatar.js`. The avatar has a solid head, body and articulated limbs. The four original face crops from `images/avatar-poses.png` are mapped without resampling onto the head front; its sides and back are solid voxel geometry. The sprite remains the fallback when WebGL is unavailable.
+
+The pump, wind turbine, chiller and substation are interactive solid models sharing one perspective camera and floor plane. Drag moves an object across the floor; the single Rotate toggle changes dragging to rotation. Scrolling changes the selected object's depth. Chiller fans spin, the pump vibrates gently, and the substation occasionally sparks. The neural network has been removed. Bellman and intervention equations sit at the top, Bayes at the bottom, with the chiller on the back-right floor below the intervention equation.
+
 The industrial 3D background is saved as `images/industrial-cyberspace.png` and was also created with the built-in ImageGen tool. Its prompt is recorded below.
 
 ## Industrial background prompt
+
+Latest chiller position adjustment:
+
+Use case: precise-object-edit. Move ONLY the small off-white/teal chiller horizontally to the RIGHT in this background image. It is currently above the center-left near x43%, y36%. Move its center to x56%, y36%, keeping exactly the same size, vertical position, equipment appearance and perspective. Its bottom should remain around42% height. The old location must become clean dark background/grid again. Keep x69%-98%, y43%-61% unobstructed for a website equation. Preserve all other pixels as closely as possible: wind turbine at left, blue centrifugal pump at lower left, foreground substation at lower right, green perspective grid, dark upper void and lighting. Leave the central lower space clear for an avatar overlay. No text, no equations, no people or robots. All four machines must remain visible. Same output dimensions.
 
 Final placement edit: move the small chiller above the avatar toward center-left (center x=43%, y=36%, bottom around42%), leaving the right-middle area empty for the intervention equation. Preserve the pump, wind turbine and foreground substation, floor perspective and rendering style. No people, text or equations in the raster background.
 
