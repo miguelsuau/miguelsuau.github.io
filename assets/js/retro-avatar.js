@@ -33,7 +33,14 @@
   const researchMode = frame.dataset.mode === "research";
   let navigationPending = false;
 
-  function wireNavigationReactions(stopAnimation) {
+  function wireNavigationReactions(stopAnimation, resumeAnimation) {
+    window.addEventListener("pageshow", event => {
+      if (!event.persisted) return;
+      navigationPending = false;
+      currentPose = 0;
+      sprite.dataset.pose = "0";
+      resumeAnimation();
+    });
     document.querySelectorAll("a[href]").forEach(link => {
       const href = link.getAttribute("href");
       const pose = /\/about\/?$/.test(href) ? 1 : /\/research\/?$/.test(href) ? 2 : /\/_pages\/cv\.pdf$/.test(href) ? 3 : null;
@@ -85,7 +92,11 @@
       sprite.style.backgroundImage = `url("${image.src}")`;
       sprite.hidden = false;
       portrait.hidden = true;
-      wireNavigationReactions(() => window.clearTimeout(greetingTimer));
+      wireNavigationReactions(() => window.clearTimeout(greetingTimer), () => {
+        visibleElapsed = 0;
+        visibleSince = document.hidden ? null : performance.now();
+        scheduleGreeting();
+      });
       scheduleGreeting();
       document.addEventListener("visibilitychange", () => {
         if (document.hidden && visibleSince !== null) {
@@ -153,7 +164,7 @@
       window.clearTimeout(idleTimer);
       window.clearTimeout(returnTimer);
       if (pending !== null) { window.clearTimeout(pending); pending = null; }
-    });
+    }, scheduleIdle);
     document.addEventListener("visibilitychange", () => {
       if (pending !== null) { window.clearTimeout(pending); pending = null; }
       window.clearTimeout(returnTimer);
