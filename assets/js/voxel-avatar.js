@@ -33,27 +33,75 @@ async function start() {
   function turbine(){const g=object('Wind turbine',[-8,0,-7]);box(g,0,.15,0,1.6,.3,1.6,0xc8cec5);cylinder(g,0,3.7,0,.27,7.2,0xd5d9cf,'y',.17);box(g,0,7.3,.05,.75,.55,1.3,0xd4d8cc);const rotor=new THREE.Group();rotor.position.set(0,7.3,.85);g.add(rotor);cylinder(rotor,0,0,0,.28,.5,0xe9ead9,'z');for(let i=0;i<3;i++){const arm=new THREE.Group();arm.rotation.z=i*Math.PI*2/3;rotor.add(arm);const blade=box(arm,0,1.6,.05,.32,3.0,.13,0xe1e4d6,-.08);blade.position.x=.15;}g.userData.rotor=rotor;return g;}
   function substation(){const g=object('Substation',[6.6,0,5.5]);box(g,0,.12,0,5.5,.24,3.8,0x979f98);box(g,-.3,1.5,0,2.7,2.5,1.7,0x929993);for(let i=0;i<13;i++)box(g,-1.6+i*.21,1.5,1.0,.07,2.1,.45,0xb5b9ae);for(const x of [-1.2,-.2,.8]){cylinder(g,x,3.2,0,.12,1.2,0x553224);for(let j=0;j<5;j++)cylinder(g,x,2.8+j*.18,0,.22,.07,0x80604c);}for(const x of [-2.2,2.2]){beam(g,[x,.25,-1],[x,4.6,-1],.13,0xc3ccc2);beam(g,[x-.3,.25,-1],[x+.3,4.6,-1],.06,0xb9c2ba);beam(g,[x+.3,.25,-1],[x-.3,4.6,-1],.06,0xb9c2ba);}beam(g,[-2.2,4.6,-1],[2.2,4.6,-1],.13,0xc3ccc2);for(const x of [-1.2,-.2,.8])beam(g,[x,4.6,-1],[x,3.7,0],.035,0x78817a);box(g,1.8,1.1,.3,.7,1.8,.8,0xbcc3b9);for(const z of [-1.8,1.8]){for(const x of [-2.6,-1.3,0,1.3,2.6])beam(g,[x,.2,z],[x,1.4,z],.045,0xb4c6b4);for(let y=.4;y<1.45;y+=.2)beam(g,[-2.6,y,z],[2.6,y,z],.018,0x8ca18b);}g.rotation.y=-.17;const sparks=new THREE.Group();for(const x of [-1.2,-.2,.8]){const points=[];for(let k=0;k<7;k++)points.push(new THREE.Vector3(x+Math.sin(k*4.3)*.12,3.7+k*.12,-k*.1));sparks.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(points),new THREE.LineBasicMaterial({color:0xaaddff,transparent:true,opacity:.95,depthWrite:false})));}sparks.visible=false;g.add(sparks);g.userData.sparks=sparks;return g;}
   function dataCenter(){
-    const g=object('Data center',[-4.3,0,-18]);
-    box(g,0,.10,0,4,.20,3,0x727d80);
-    box(g,0,1.44,0,3.6,2.5,2.4,0x697b85);
-    box(g,0,1.45,1.225,3.30,2.18,.08,0x101e26);
+    // Stylized Vera Rubin NVL72: 18 compute trays, 9 switches, 4 power shelves.
+    // Reference: docs.nvidia.com/dgx/dgxvr-user-guide/hardware.html
+    const g=object('Vera Rubin NVL72 rack',[-4.7,0,-16]);
+    const charcoal=0x171b1c,gold=0x94866a,edge=0xb5a17a,steel=0x535b5c;
+    box(g,0,.16,0,2.9,.25,2.75,charcoal);
+    box(g,0,3.48,0,2.48,6.45,2.35,0x222829);
+    box(g,0,3.48,1.20,2.25,6.15,.10,0x080c0c);
+    for(const x of [-1.27,1.27]){
+      box(g,x,3.48,1.25,.15,6.55,.22,charcoal);
+      box(g,x,3.48,-1.23,.15,6.55,.18,charcoal);
+      for(const z of [-1.15,1.15])cylinder(g,x,.11,z,.09,.22,steel);
+      // Side panel seams and a recessed service handle.
+      for(const y of [1.7,3.45,5.2])box(g,x, y,0,.04,.025,2.20,0x101515);
+      box(g,x*1.01,3.6,.45,.04,.42,.07,0x080c0c);
+    }
+    box(g,0,6.77,0,2.72,.18,2.62,charcoal);
+    box(g,0,.42,1.28,2.37,.30,.15,charcoal);
     const lights=[];
-    for(const x of [-1.08,0,1.08]){
-      box(g,x,1.43,1.29,.92,2.02,.13,0x24343e);
-      for(let row=0;row<6;row++){
-        const y=.64+row*.30;
-        box(g,x,y,1.38,.78,.225,.12,0x4c626f);
-        box(g,x-.10,y,1.45,.43,.055,.025,0x101c24);
-        const light=new THREE.Mesh(boxGeometry,new THREE.MeshBasicMaterial({color:row%2?0x42d6ff:0x78f48b}));
-        light.position.set(x+.28,y,1.46);light.scale.set(.045,.045,.025);g.add(light);lights.push(light);
+    const ledMaterial=new THREE.MeshBasicMaterial({color:0x9feb35});
+    function led(x,y,z){const light=new THREE.Mesh(boxGeometry,ledMaterial);light.position.set(x,y,z);light.scale.set(.035,.025,.018);g.add(light);lights.push(light);}
+    for(let row=0;row<27;row++){
+      const y=1.56+row*.143,compute=row<8||row>=17;
+      box(g,0,y,1.29,2.12,.125,.19,gold);
+      if(compute){
+        for(const x of [-.82,.82]){
+          box(g,x,y,1.397,.30,.075,.025,0x141c1b);
+          box(g,x,y,1.425,.34,.018,.035,edge);
+        }
+        for(const x of [-.35,-.16,.16,.35])box(g,x,y,1.397,.08,.035,.025,0x152020);
+        led(.55,y,1.415);
+      }else{
+        for(let port=0;port<6;port++)box(g,-.83+port*.16,y,1.397,.09,.048,.025,0x182221);
+        box(g,.63,y,1.41,.35,.024,.045,edge);
+        led(.90,y,1.415);
       }
     }
-    for(const x of [-1.74,-.54,.54,1.74])box(g,x,1.45,1.47,.055,2.23,.055,0xa1b0b3);
-    box(g,0,2.79,0,3.91,.20,2.70,0xb6bfc0);
-    box(g,-.8,3.07,-.25,1.12,.40,.84,0xb9c1b9);
-    cylinder(g,-.8,3.29,-.25,.30,.035,0x344741);
-    for(let i=0;i<5;i++)box(g,-1.835,1.1+i*.19,-.05,.025,.055,1.45,0x31464b);
-    g.rotation.y=.18;g.userData.serverLights=lights;return g;
+    for(const x of [-1.08,1.08])box(g,x,3.42,1.41,.065,4.04,.09,edge);
+    for(const y of [.81,1.20,5.65,6.04]){
+      box(g,0,y,1.29,2.16,.34,.21,steel);
+      for(let psu=0;psu<6;psu++){
+        const x=-.89+psu*.355;
+        box(g,x,y,1.41,.30,.27,.045,0x151c1d);
+        for(const dy of [-.075,0,.075])box(g,x,y+dy,1.44,.22,.018,.02,0x67716d);
+        box(g,x+.12,y,1.46,.018,.16,.025,edge);
+      }
+    }
+    // Two top-of-rack switches, with a small green-accented nameplate.
+    for(const y of [6.35,6.51]){
+      box(g,0,y,1.30,2.13,.13,.22,gold);
+      for(let port=0;port<12;port++)box(g,-.94+port*.17,y,1.42,.10,.055,.025,0x1a2423);
+    }
+    const label=document.createElement('canvas');label.width=512;label.height=64;
+    const ctx=label.getContext('2d');ctx.fillStyle='#111616';ctx.fillRect(0,0,512,64);
+    ctx.fillStyle='#76b900';ctx.fillRect(0,0,12,64);ctx.fillStyle='#d9ddce';ctx.font='bold 32px monospace';ctx.textAlign='center';ctx.fillText('VERA RUBIN / NVL72',266,43);
+    const texture=new THREE.CanvasTexture(label);texture.colorSpace=THREE.SRGBColorSpace;
+    const badge=new THREE.Mesh(new THREE.PlaneGeometry(2.27,.284),new THREE.MeshBasicMaterial({map:texture,toneMapped:false}));badge.position.set(0,6.80,1.335);g.add(badge);
+    // Actual rear geometry remains visible when the visitor turns the rack.
+    for(const x of [-.88,.88]){
+      cylinder(g,x,3.45,-1.37,.095,5.75,steel);
+      for(let row=0;row<27;row++){
+        const y=1.56+row*.143;
+        cylinder(g,x,y,-1.47,.045,.23,0x9ca59d,'z');
+        box(g,x*.75,y,-1.30,.29,.045,.10,0x171d1b);
+      }
+      for(const y of [.53,6.37]){cylinder(g,x,y,-1.38,.15,.19,0xa4aaa1);cylinder(g,x,y,-1.58,.10,.35,steel,'z');}
+    }
+    for(let row=0;row<27;row++)box(g,0,1.56+row*.143,-1.27,1.28,.095,.14,0x0c1110);
+    box(g,.48,3.45,-1.41,.10,5.85,.07,0x86633d);
+    g.rotation.y=-.28;g.userData.serverLights=lights;return g;
   }
   const image=await new Promise((resolve,reject)=>{const i=new Image();i.onload=()=>resolve(i);i.onerror=reject;i.src=frame.dataset.sprite;});
   const moustache=await new Promise((resolve)=>{const i=new Image();i.onload=()=>resolve(i);i.onerror=()=>resolve(null);i.src=frame.dataset.moustache;});
@@ -65,7 +113,7 @@ async function start() {
   const ray=new THREE.Raycaster(),pointer=new THREE.Vector2(),point=new THREE.Vector3();
   function setRay(event){const r=renderer.domElement.getBoundingClientRect();pointer.set((event.clientX-r.left)/r.width*2-1,-(event.clientY-r.top)/r.height*2+1);ray.setFromCamera(pointer,camera);}
   const controls=landing?host.parentElement.querySelector('.scene-tools'):null;
-  if(controls){controls.hidden=false;const button=controls.querySelector('[data-scene-mode]');button.addEventListener('click',()=>{mode=mode==='rotate'?'move':'rotate';button.setAttribute('aria-pressed',String(mode==='rotate'));});}
+  if(controls){controls.hidden=false;const button=controls.querySelector('[data-scene-mode]');button.addEventListener('click',()=>{mode=mode==='rotate'?'move':'rotate';button.textContent=mode==='rotate'?'Move':'Rotate';button.title=mode==='rotate'?'Switch to moving objects.':'Switch to rotating objects.';button.setAttribute('aria-pressed',String(mode==='rotate'));});}
   renderer.domElement.style.touchAction='none';
   renderer.domElement.addEventListener('pointerdown',event=>{setRay(event);const hit=ray.intersectObjects(roots,true)[0];if(!hit)return;let root=hit.object;while(!root.userData.interactive&&root.parent)root=root.parent;selected=root;const plane=new THREE.Plane(new THREE.Vector3(0,1,0),-root.position.y);const onPlane=ray.ray.intersectPlane(plane,new THREE.Vector3());drag={x:event.clientX,y:event.clientY,rotation:root.rotation.clone(),plane,offset:onPlane?onPlane.sub(root.position):new THREE.Vector3(),rotate:!landing||mode==='rotate'||event.shiftKey};renderer.domElement.setPointerCapture(event.pointerId);renderer.domElement.style.cursor=drag.rotate?'grabbing':'move';});
   renderer.domElement.addEventListener('pointermove',event=>{if(!drag)return;if(drag.rotate){selected.rotation.y=drag.rotation.y+(event.clientX-drag.x)*.012;selected.rotation.x=THREE.MathUtils.clamp(drag.rotation.x+(event.clientY-drag.y)*.007,-.45,.45);}else{setRay(event);if(ray.ray.intersectPlane(drag.plane,point)){point.sub(drag.offset);selected.position.x=THREE.MathUtils.clamp(point.x,-17,17);selected.position.z=THREE.MathUtils.clamp(point.z,-25,12);}}});
