@@ -12,16 +12,11 @@ a:focus-visible { outline: 3px dotted #b00020; outline-offset: 4px; }
 .skip-link:focus { top: 8px; }
 .homepage { max-width: 1000px; margin: 0 auto; }
 .welcome-strip { margin-bottom: 9px; text-align: center; font-weight: bold; font-size: 16px; }
-.space-banner { position: relative; overflow: hidden; min-height: 200px; padding: 24px 130px 21px; border: 4px ridge #eee; text-align: center; background: #000018 url("../../images/retro-stars.svg") repeat; color: #fff; }
+.space-banner { position: relative; overflow: hidden; min-height: 144px; padding: 24px 130px; border: 4px ridge #eee; text-align: center; background: #000705 url("../../images/industrial-cyberspace.png?v=4") center 58% / cover no-repeat; color: #fff; }
 .eyebrow { margin: 0 0 1px; color: #ffff74; font: bold 12px/1.6 "Courier New", monospace; letter-spacing: 3px; }
-.wordmark { position: relative; display: inline-block; color: #6dffff; font-size: clamp(48px, 6.5vw, 76px); font-weight: bold; font-style: italic; line-height: 1.15; letter-spacing: -3px; text-shadow: 2px 2px #005174, 4px 4px #000, 5px 5px #888; }
-@supports (background-clip: text) { .wordmark { background: linear-gradient(#fff 5%, #70fcff 35%, #00aaa9 49%, #003d78 51%, #39efff 75%, #fff 94%); background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-stroke: .5px #91ffff; text-shadow: none; filter: drop-shadow(3px 4px 0 #003d78); } }
-.wordmark-star { display: inline-block; margin-left: 8px; color: #ffff00; -webkit-text-stroke: 0; font-size: 35px; vertical-align: top; }
+.wordmark { position: relative; display: inline-block; color: #ffff00; font-family: "Lucida Console", Monaco, "Courier New", monospace; font-size: clamp(36px, 5.5vw, 66px); font-weight: bold; font-style: normal; line-height: 1.15; letter-spacing: -2px; transform: none; -webkit-text-stroke: .4px #fff6a0; text-shadow: 1px 1px #c5a000, 2px 2px #b59000, 3px 3px #a58000, 4px 4px #957000, 5px 5px #856000, 6px 6px #755000, 7px 7px #654300, 8px 8px #553800, 10px 12px 2px #000; }
 .banner-caption { margin: 12px 0 0; font-size: 16px; color: #fff; }
 .banner-caption span { margin: 0 8px; color: #ffff00; }
-.planet { position: absolute; pointer-events: none; }
-.planet-left { left: 29px; top: 48px; transform: rotate(-14deg); }
-.planet-right { right: 48px; top: 56px; }
 .directory { margin: 10px 0 18px; padding: 9px 8px; border: 3px outset #ffffaa; background: #ffff00; text-align: center; font-weight: bold; font-size: 17px; }
 .directory > span { margin: 0 11px; color: #777000; font-weight: normal; }
 .file-type { font: 10px "Courier New", monospace; }
@@ -76,24 +71,36 @@ hr { height: 2px; border: 0; border-top: 1px solid #808080; border-bottom: 1px s
 .research-directory + h1 { margin-top: 0; }
 .landing-page { min-height: 100svh; display: grid; place-items: center; padding: 24px 16px; }
 .entrance { width: min(100%, 620px); text-align: center; }
-.entrance-space { padding: 18px 20px 4px; border: 4px ridge #eee; background: #000018 url("../../images/retro-stars.svg") repeat; }
-.entrance .wordmark { margin: 0 0 5px; font-size: clamp(46px, 7vw, 66px); }
-.entrance-avatar { width: 156px; min-height: 416px; margin: 0 auto; }
-.entrance-avatar .portrait { width: 156px; }
+.entrance-space { position: relative; padding: 18px 20px 4px; border: 4px ridge #fff; background: #000705 url("../../images/industrial-cyberspace.png?v=4") center bottom / 100% 100% no-repeat; animation: frame-blink 4s steps(1, end) infinite; }
+@keyframes frame-blink { 0%, 100% { border-color: #fff; } 50% { border-color: #ff26d9; } }
+.entrance-space .banner-caption { margin: 2px 0 0; font: 16px "Courier New", monospace; letter-spacing: 2px; }
+.scene-equations { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.scene-network { position: absolute; width: 150px; height: auto; right: 3%; top: 23%; opacity: .45; transform: perspective(280px) rotateY(-25deg) rotateZ(7deg); filter: drop-shadow(0 0 3px #174a43); }
+.equation { position: absolute; color: #8cabbc; opacity: .28; font: bold 17px/1.5 "Courier New", monospace; text-align: left; text-shadow: 1px 2px #00140d; }
+.equation-bayes { bottom: 3%; left: 5%; transform: rotate(-7deg); }
+.equation-causal { top: 47%; right: 3%; transform: rotate(10deg); }
+.equation-bellman { top: 28%; left: 4%; max-width: 90%; font-size: 14px; transform: rotate(-3deg); }
+.fraction { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; line-height: 1.2; }
+.fraction > span:first-child { border-bottom: 1px solid currentColor; padding: 0 2px 2px; }
+.fraction > span:last-child { padding-top: 2px; }
+.entrance-avatar, .entrance-space .wordmark, .entrance-space .eyebrow, .entrance-space .banner-caption { position: relative; z-index: 1; }
+.entrance .wordmark { margin: 0 0 5px; font-size: clamp(36px, 6.9vw, 60px); }
+.entrance-avatar { display: flex; align-items: flex-end; justify-content: center; width: 120px; min-height: 416px; margin: 0 auto; }
+.entrance-avatar .portrait, .entrance-avatar .avatar-sprite { width: 120px; }
 .entrance-directory { margin: 10px 0 0; padding: 12px; font-size: 21px; }
 .entrance-directory > span { margin: 0 22px; }
 .retro-social { display: flex; flex-wrap: wrap; gap: 14px 23px; justify-content: center; margin: 21px 0 0; padding: 0; list-style: none; }
 .retro-social a { display: flex; flex-direction: column; align-items: center; gap: 5px; font-size: 13px; }
 .retro-social svg { width: 32px; height: 32px; image-rendering: pixelated; filter: drop-shadow(1px 1px 0 #fff); }
+.retro-social .github-mark { width: 32px; height: 32px; }
+.github-icon { display: block; width: 32px; height: 32px; }
+.github-pixel { width: 32px; height: 32px; image-rendering: pixelated; }
 @media (max-width: 700px) {
   body { padding: 14px 12px 24px; font-size: 17px; }
-  .space-banner { min-height: 176px; padding: 23px 45px; }
+  .space-banner { min-height: 108px; padding: 24px 45px; }
   .eyebrow { font-size: 9px; letter-spacing: 2px; }
-  .wordmark { font-size: 46px; }
-  .wordmark-star { position: absolute; right: -23px; top: 0; font-size: 22px; margin-left: 0; }
+  .wordmark { font-size: clamp(28px, 7.8vw, 40px); }
   .banner-caption { font-size: 14px; }
-  .planet-left { width: 62px; height: auto; left: -8px; top: 65px; }
-  .planet-right { width: 42px; height: auto; right: -5px; top: 60px; }
   .directory { line-height: 1.9; margin-bottom: 14px; font-size: 16px; }
   .directory > span { margin: 0 5px; }
   .page-columns { grid-template-columns: 1fr; gap: 20px; }
@@ -112,12 +119,18 @@ hr { height: 2px; border: 0; border-top: 1px solid #808080; border-bottom: 1px s
   .web-badges, .sidebar-note { display: none; }
   .content > h1 { font-size: 22px; }
   .entrance-space { padding-top: 24px; }
-  .entrance .wordmark { font-size: 46px; }
-  .entrance-avatar { width: 126px; min-height: 336px; }
-  .entrance-avatar .avatar-sprite, .entrance-avatar .portrait { width: 126px; }
+  .equation { font-size: 12px; }
+  .scene-network { width: 94px; right: 1%; top: 24%; }
+  .equation-bayes { left: 4%; bottom: 4%; }
+  .equation-causal { right: 2%; top: 49%; }
+  .equation-bellman { font-size: 10px; max-width: 92%; left: 4%; }
+  .entrance .wordmark { font-size: clamp(30px, 8vw, 42px); }
+  .entrance-avatar { width: 96px; min-height: 336px; }
+  .entrance-avatar .avatar-sprite, .entrance-avatar .portrait { width: 96px; }
   .entrance-directory { font-size: 20px; }
   .entrance-directory > span { margin: 0 10px; }
   .retro-social { gap: 14px 18px; }
 }
-@media (max-width: 380px) { .wordmark { font-size: 44px; } .banner-caption { font-size: 12px; } }
+@media (prefers-reduced-motion: reduce) { .entrance-space { animation: none; } }
+@media (max-width: 380px) { .banner-caption { font-size: 12px; } }
 @media print { body { background: #fff; padding: 0; } .space-banner, .welcome-strip, .directory, .profile, .site-footer, .back-to-top { display: none; } .page-columns { display: block; } .content > h1 { background: none; border: 0; padding-left: 0; } a, a:visited { color: #000; } }
