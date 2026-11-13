@@ -7,9 +7,9 @@
     <meta name="description" content="{{ page.excerpt | escape }}">
     <link rel="canonical" href="{{ page.url | absolute_url }}">
     <link rel="icon" href="{{ '/images/retro-robot.svg' | relative_url }}" type="image/svg+xml">
-    <link rel="stylesheet" href="{{ '/assets/css/retro.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/retro.css?v=7' | relative_url }}">
     <script src="{{ '/assets/js/retro-avatar.js' | relative_url }}" defer></script>
-    <script src="{{ '/assets/js/voxel-avatar.js' | relative_url }}" defer></script>
+    <script type="module" src="{{ '/assets/js/voxel-avatar.js?v=11' | relative_url }}"></script>
   </head>
   <body class="landing-page">
     <main class="entrance" aria-label="Miguel Suau's personal home page">
@@ -19,6 +19,9 @@
         <h1 class="wordmark">Miguel Suau</h1>
         <p class="banner-caption">machine teacher</p>
         {% include retro-equations.html %}
+        <div class="scene-tools" hidden>
+          <button type="button" data-scene-mode="rotate" aria-pressed="false" title="Select to rotate the object you drag. Deselect to move objects.">Rotate</button>
+        </div>
         <div class="entrance-avatar" data-avatar data-mode="landing" data-sprite="{{ '/images/avatar-poses.png' | relative_url }}">
           <img class="portrait" src="{{ site.author.avatar | prepend: '/images/' | relative_url }}" alt="Avatar of Miguel Suau" width="1060" height="1484">
           <div class="avatar-sprite" role="img" aria-label="Avatar of Miguel Suau" hidden></div>
