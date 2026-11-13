@@ -1,6 +1,21 @@
 /* A little dial-up lag: one pose change, one second after a click. */
 (() => {
   "use strict";
+  const githubIcon = document.querySelector(".github-icon");
+  if (githubIcon) {
+    const source = githubIcon.querySelector("img");
+    const canvas = githubIcon.querySelector("canvas");
+    const icon = new Image();
+    icon.onload = () => {
+      const context = canvas.getContext("2d");
+      if (!context) return;
+      context.imageSmoothingEnabled = false;
+      context.drawImage(icon, 0, 0, 16, 16);
+      canvas.hidden = false;
+      source.hidden = true;
+    };
+    icon.src = source.src;
+  }
   const frame = document.querySelector("[data-avatar]");
   if (!frame) return;
   const sprite = frame.querySelector(".avatar-sprite");
@@ -15,6 +30,29 @@
   let returnTimer = null;
   let nextIdlePose = 1;
   const image = new Image();
+  const researchMode = frame.dataset.mode === "research";
+  let navigationPending = false;
+
+  function wireNavigationReactions(stopAnimation) {
+    document.querySelectorAll("a[href]").forEach(link => {
+      const href = link.getAttribute("href");
+      const pose = /\/about\/?$/.test(href) ? 1 : /\/research\/?$/.test(href) ? 2 : /\/_pages\/cv\.pdf$/.test(href) ? 3 : null;
+      if (pose === null) return;
+      link.addEventListener("click", event => {
+        // Modified clicks retain the browser's normal new-tab behavior.
+        if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        if (navigationPending) return;
+        navigationPending = true;
+        stopAnimation();
+        window.setTimeout(() => {
+          currentPose = pose;
+          sprite.dataset.pose = String(pose);
+          window.setTimeout(() => window.location.assign(href), 650);
+        }, 1000);
+      });
+    });
+  }
 
   if (frame.dataset.mode === "landing") {
     let greetingTimer = null;
@@ -22,7 +60,7 @@
     let visibleSince = document.hidden ? null : performance.now();
     function scheduleGreeting(toggle = false) {
       window.clearTimeout(greetingTimer);
-      if (document.hidden || reducedMotion.matches) return;
+      if (document.hidden || reducedMotion.matches || navigationPending) return;
       const dwell = visibleElapsed + (visibleSince === null ? 0 : performance.now() - visibleSince);
       if (dwell >= 60000) {
         currentPose = 3;
@@ -47,6 +85,7 @@
       sprite.style.backgroundImage = `url("${image.src}")`;
       sprite.hidden = false;
       portrait.hidden = true;
+      wireNavigationReactions(() => window.clearTimeout(greetingTimer));
       scheduleGreeting();
       document.addEventListener("visibilitychange", () => {
         if (document.hidden && visibleSince !== null) {
@@ -68,7 +107,7 @@
   }
 
   function changeAfterLag(pose, explicit = false) {
-    if (document.hidden || pending !== null || (!explicit && reducedMotion.matches)) return;
+    if (document.hidden || navigationPending || pending !== null || (!explicit && reducedMotion.matches)) return;
     if (!explicit && performance.now() - lastChange < 12000) return;
     if (pose === currentPose) return;
     window.clearTimeout(returnTimer);
@@ -90,10 +129,10 @@
 
   function scheduleIdle() {
     window.clearTimeout(idleTimer);
-    if (document.hidden || reducedMotion.matches) return;
+    if (document.hidden || reducedMotion.matches || navigationPending) return;
     idleTimer = window.setTimeout(() => {
       if (currentPose === 0) {
-        changeAfterLag(nextIdlePose);
+        changeAfterLag(researchMode ? 2 : nextIdlePose);
         nextIdlePose = nextIdlePose % 3 + 1;
       }
       scheduleIdle();
@@ -105,10 +144,15 @@
     sprite.style.backgroundImage = `url("${image.src}")`;
     sprite.hidden = false;
     portrait.hidden = true;
-    button.hidden = false;
-    button.addEventListener("click", () => changeAfterLag(1, true));
-    document.querySelectorAll(".directory a").forEach(link => {
-      link.addEventListener("click", () => changeAfterLag(poses[link.getAttribute("href")] ?? 3));
+    button.hidden = researchMode;
+    if (!researchMode) button.addEventListener("click", () => changeAfterLag(1, true));
+    document.querySelectorAll(".research-directory a").forEach(link => {
+      link.addEventListener("click", () => changeAfterLag(researchMode ? 2 : (poses[link.getAttribute("href")] ?? 3)));
+    });
+    wireNavigationReactions(() => {
+      window.clearTimeout(idleTimer);
+      window.clearTimeout(returnTimer);
+      if (pending !== null) { window.clearTimeout(pending); pending = null; }
     });
     document.addEventListener("visibilitychange", () => {
       if (pending !== null) { window.clearTimeout(pending); pending = null; }
