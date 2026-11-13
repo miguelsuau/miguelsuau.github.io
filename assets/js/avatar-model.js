@@ -31,11 +31,18 @@ export function createAvatar(THREE, { image, object }) {
   function point(x, y, back = false) {
     const nx = (x / columns - .5) * 2, ny = (.5 - y / rows) * 2;
     const curve = Math.sqrt(Math.max(.008, 1 - (nx * 1.06) ** 2 - (ny * 1.03) ** 2));
-    return [(x / columns - .5) * width, (.5 - y / rows) * height, (back ? -1.05 : 1.05) * curve];
+    let curlDepth = 0;
+    if (back) for (const cx of [-.62, 0, .62]) for (const cy of [-.55, .05, .65]) {
+      curlDepth += .055 * Math.exp(-(((nx-cx)/.22)**2 + ((ny-cy)/.24)**2));
+    }
+    return [(x / columns - .5) * width, (.5 - y / rows) * height, (back ? -1.05 - curlDepth : 1.05) * curve];
   }
-  const front = [], uv = [], volume = [];
+  const front = [], uv = [], volume = [], volumeUV = [];
   function quad(target, corners) {
-    for (const index of [0, 1, 2, 0, 2, 3]) target.push(...corners[index]);
+    for (const index of [0, 1, 2, 0, 2, 3]) {
+      target.push(...corners[index]);
+      if (target === volume) volumeUV.push(corners[index][0] / width + .5, corners[index][1] / height + .5);
+    }
   }
   // One continuous, closed curved shell, using the approved head silhouette.
   for (let y = 0; y < rows; y++) for (let x = 0; x < columns; x++) {
@@ -56,11 +63,56 @@ export function createAvatar(THREE, { image, object }) {
     }
   }
   const shell = new THREE.BufferGeometry();
-  shell.setAttribute('position', new THREE.Float32BufferAttribute(volume, 3)); shell.computeVertexNormals();
-  head.add(new THREE.Mesh(shell, material(palette.hair)));
-  const surface = new THREE.BufferGeometry();
-  surface.setAttribute('position', new THREE.Float32BufferAttribute(front, 3));
-  surface.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2)); surface.computeVertexNormals();
+  shell.setAttribute('position', new THREE.Float32BufferAttribute(volume, 3));
+  shell.setAttribute('uv', new THREE.Float32BufferAttribute(volumeUV, 2)); shell.computeVertexNormals();
+  // Carry the same coarse brown-and-black curls around the curved rear surface.
+  const hairCanvas = document.createElement('canvas'); hairCanvas.width = 64; hairCanvas.height = 64;
+  const hair = hairCanvas.getContext('2d'); hair.imageSmoothingEnabled = false;
+  const sampleCanvas = document.createElement('canvas'); sampleCanvas.width = 64; sampleCanvas.height = 32;
+  const sampleContext = sampleCanvas.getContext('2d'); sampleContext.imageSmoothingEnabled = false;
+  sampleContext.drawImage(image, 80, 130, 224, 100, 0, 0, 64, 32);
+  const sample = sampleContext.getImageData(0, 0, 64, 32).data;
+  const rear = hair.createImageData(64, 64);
+  for (let y = 0; y < 64; y++) for (let x = 0; x < 64; x++) {
+    const sx = y < 32 ? x : 63-x, sy = y < 32 ? y : 63-y;
+    const source = (sy * 64 + sx) * 4, dest = (y * 64 + x) * 4;
+    const valid = sample[source+3] > 220 && sample[source] < 145;
+    const fallback = ((8 + y % 13) * 64 + 16 + x % 30) * 4;
+    const pick = valid ? source : fallback;
+    for (let channel = 0; channel < 3; channel++) rear.data[dest+channel] = Math.min(sample[pick+channel], channel === 0 ? 125 : channel === 1 ? 88 : 58);
+    rear.data[dest+3] = 255;
+  }
+  hair.putImageData(rear, 0, 0);
+  const hairTexture = new THREE.CanvasTexture(hairCanvas); hairTexture.colorSpace = THREE.SRGBColorSpace;
+  hairTexture.magFilter = THREE.NearestFilter; hairTexture.minFilter = THREE.NearestFilter;
+  head.add(new THREE.Mesh(shell, new THREE.MeshLambertMaterial({ map: hairTexture, color: 0xbfbfbf })));
+  const features = [
+    { nose: [206, 302], eyes: [[170, 270], [231, 270]], mouth: [204, 344], opening: 5 },
+    { nose: [206, 301], eyes: [[164, 267], [225, 267]], mouth: [206, 336], opening: 14 },
+    { nose: [206, 298], eyes: [[163, 266], [222, 266]], mouth: [193, 327], opening: 5 },
+    { nose: [206, 300], eyes: [[165, 272], [227, 272]], mouth: [210, 329], opening: 5 }
+  ];
+  function sculptedSurface(pose) {
+    const positions = front.slice(), f = features[pose];
+    const bump = (px, py, cx, cy, rx, ry) => Math.exp(-(((px-cx)/rx)**2 + ((py-cy)/ry)**2));
+    for (let i = 0; i < positions.length; i += 3) {
+      const px = 48 + (positions[i] / width + .5) * 288;
+      const py = 98 + (.5 - positions[i+1] / height) * 288;
+      let relief = .25 * bump(px,py,...f.nose,12,12) + .11 * bump(px,py,f.nose[0],f.nose[1]-15,8,22);
+      for (const eye of f.eyes) {
+        relief -= .09 * bump(px,py,...eye,24,14);
+        relief += .055 * bump(px,py,eye[0],eye[1]-18,23,7);
+        relief += .045 * bump(px,py,...eye,13,6);
+      }
+      relief -= .10 * bump(px,py,...f.mouth,22,f.opening);
+      relief += .035 * bump(px,py,f.mouth[0],f.mouth[1]+8,22,5);
+      positions[i+2] += relief;
+    }
+    const surface = new THREE.BufferGeometry();
+    surface.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    surface.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2)); surface.computeVertexNormals();
+    return surface;
+  }
   for (let pose = 0; pose < 4; pose++) {
     const crop = document.createElement('canvas'); crop.width = 288; crop.height = 288;
     const ctx = crop.getContext('2d'); ctx.imageSmoothingEnabled = false;
@@ -68,7 +120,7 @@ export function createAvatar(THREE, { image, object }) {
     const texture = new THREE.CanvasTexture(crop);
     texture.colorSpace = THREE.SRGBColorSpace;
     texture.magFilter = THREE.NearestFilter; texture.minFilter = THREE.NearestFilter;
-    const face = new THREE.Mesh(surface, new THREE.MeshBasicMaterial({ map: texture, transparent: true, alphaTest: .7 }));
+    const face = new THREE.Mesh(sculptedSurface(pose), new THREE.MeshLambertMaterial({ map: texture, color: 0xffffff, transparent: true, alphaTest: .7 }));
     face.visible = pose === 0; head.add(face); expressions.push(face);
   }
 
@@ -87,12 +139,18 @@ export function createAvatar(THREE, { image, object }) {
   block(person, -.68, 4.92, .74, .46, .32, .055, 0x151813, .025);
   block(person, -.68, 4.95, .78, .29, .07, .025, 0x666a60, .005);
 
-  const arms = [-1, 1].map(side => ({
-    side,
-    upper: block(person, 0, 0, 0, .6, 1, .67, palette.jacket, .1),
-    lower: block(person, 0, 0, 0, .55, 1, .62, palette.lapel, .08),
-    hand: block(person, 0, 0, 0, .47, .61, .43, palette.skin, .065)
-  }));
+  const arms = [-1, 1].map(side => {
+    const hand = new THREE.Group(); person.add(hand);
+    block(hand, 0, 0, 0, .43, .4, .3, palette.skin, .04);
+    const thumb = block(hand, -.24, -.02, .04, .15, .26, .22, palette.skin, .025);
+    thumb.rotation.z = -.35;
+    const fingers = Array.from({ length: 4 }, (_, i) => block(hand, -.16 + i * .108, -.28, .03, .086, .27 + (i === 1 ? .045 : 0), .17, palette.skin, .015));
+    return {
+      side, hand, fingers,
+      upper: block(person, 0, 0, 0, .6, 1, .67, palette.jacket, .1),
+      lower: block(person, 0, 0, 0, .55, 1, .62, palette.lapel, .08)
+    };
+  });
   function segment(mesh, a, b) {
     const from = new THREE.Vector3(...a), to = new THREE.Vector3(...b);
     const delta = to.clone().sub(from);
@@ -105,10 +163,16 @@ export function createAvatar(THREE, { image, object }) {
       const s = arm.side;
       let elbow = [s * 1.4, 4.18, 0], wrist = [s * 1.4, 2.97, .08];
       if (s === 1 && value === 1) { elbow = [1.92, 6.2, .12]; wrist = [2.31 + Math.sin(time * 5) * .12, 7.5, .25]; }
-      if (s === 1 && value === 2) { elbow = [1.65, 4.1, .6]; wrist = [.57, 6.32, 1.26]; }
+      if (s === 1 && value === 2) { elbow = [1.65, 4.1, .6]; wrist = [.45, 5.95, .55]; }
       if (s === 1 && value === 3) { elbow = [1.97, 4.8, .1]; wrist = [2.9, 5.6, .25]; }
       segment(arm.upper, [s * 1.23, 5.48, 0], elbow); segment(arm.lower, elbow, wrist);
       arm.hand.position.set(...wrist); arm.hand.rotation.z = value === 1 && s === 1 ? -.12 : 0;
+      arm.fingers.forEach((finger, i) => {
+        const waving = s === 1 && value === 1, pointing = s === 1 && value === 3 && i === 0;
+        finger.scale.y = pointing ? 1.35 : 1;
+        finger.position.set(pointing ? .4 : -.16 + i * .108, pointing ? .08 : waving ? .32 : -.28, .03);
+        finger.rotation.z = pointing ? -Math.PI / 2 : waving ? (1.5 - i) * .07 : 0;
+      });
     }
   };
   person.userData.head = head;

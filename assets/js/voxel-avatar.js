@@ -1,5 +1,5 @@
 import * as THREE from './three.module.js';
-import { createAvatar } from './avatar-model.js?v=3';
+import { createAvatar } from './avatar-model.js?v=7';
 
 // Solid models, one perspective camera, and ground-plane dragging.
 const frame = document.querySelector('[data-avatar]');
