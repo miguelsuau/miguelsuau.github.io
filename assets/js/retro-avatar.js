@@ -30,6 +30,14 @@
   let returnTimer = null;
   let nextIdlePose = 1;
   const image = new Image();
+  function applyMoustachePatch() {
+    if (!frame.dataset.moustache) return;
+    const edited = new Image();
+    edited.onload = () => import(frame.dataset.artworkModule).then(({composeAvatarArtwork}) => {
+      sprite.style.backgroundImage = `url("${composeAvatarArtwork(image,edited).toDataURL()}")`;
+    }).catch(() => {});
+    edited.src = frame.dataset.moustache;
+  }
   const researchMode = frame.dataset.mode === "research";
   let navigationPending = false;
 
@@ -92,6 +100,7 @@
       sprite.style.backgroundImage = `url("${image.src}")`;
       sprite.hidden = false;
       portrait.hidden = true;
+      applyMoustachePatch();
       wireNavigationReactions(() => window.clearTimeout(greetingTimer), () => {
         visibleElapsed = 0;
         visibleSince = document.hidden ? null : performance.now();
@@ -155,6 +164,7 @@
     sprite.style.backgroundImage = `url("${image.src}")`;
     sprite.hidden = false;
     portrait.hidden = true;
+    applyMoustachePatch();
     button.hidden = researchMode;
     if (!researchMode) button.addEventListener("click", () => changeAfterLag(1, true));
     document.querySelectorAll(".research-directory a").forEach(link => {
