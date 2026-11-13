@@ -8,11 +8,41 @@
     <link rel="canonical" href="{{ page.url | absolute_url }}">
     <link rel="icon" href="{{ '/images/retro-robot.svg' | relative_url }}" type="image/svg+xml">
     <link rel="stylesheet" href="{{ '/assets/css/retro.css?v=7' | relative_url }}">
-    <script src="{{ '/assets/js/retro-avatar.js?v=4' | relative_url }}" defer></script>
-    <script type="module" src="{{ '/assets/js/voxel-avatar.js?v=24' | relative_url }}"></script>
+    <script src="{{ '/assets/js/retro-avatar.js?v=5' | relative_url }}" defer></script>
+    <script type="module" src="{{ '/assets/js/voxel-avatar.js?v=25' | relative_url }}"></script>
+    {% if page.avatar_comparison %}
+    <meta name="robots" content="noindex">
+    <style>
+      .avatar-review { margin: 0 0 16px; padding: 12px; border: 3px ridge white; background: #c0c0c0; color: black; }
+      .avatar-review h2 { margin: 0 0 8px; font: bold 19px 'Courier New', monospace; }
+      .avatar-review p { margin: 8px 0; font-size: 14px; }
+      .avatar-review nav { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+      .avatar-review nav a, .avatar-review button { padding: 5px 9px; border: 2px outset white; background: #ddd; color: #000080; font: 14px 'Courier New', monospace; cursor: pointer; }
+      .avatar-review a[aria-current='page'], .avatar-review button[aria-pressed='true'] { border-style: inset; background: #ffff70; color: black; }
+      .avatar-review .pose-picker { display: flex; justify-content: center; gap: 5px; flex-wrap: wrap; }
+    </style>
+    {% endif %}
   </head>
   <body class="landing-page">
     <main class="entrance" aria-label="Miguel Suau's personal home page">
+      {% if page.avatar_comparison %}
+      <section class="avatar-review" aria-label="Compare avatar versions">
+        <h2>Choose your avatar</h2>
+        <nav aria-label="Avatar versions">
+          <a href="{{ '/avatar-comparison/' | relative_url }}" {% unless page.avatar_style == 'nft' %}aria-current="page"{% endunless %}>A — Rendered</a>
+          <a href="{{ '/avatar-comparison/nft/' | relative_url }}" {% if page.avatar_style == 'nft' %}aria-current="page"{% endif %}>B — Original NFT</a>
+        </nav>
+        <p>Same height, extrusion and scene. Try each expression, or select Rotate below.</p>
+        <div class="pose-picker" role="group" aria-label="Preview expression">
+          <button type="button" data-review-pose="auto" aria-pressed="true">Auto</button>
+          <button type="button" data-review-pose="0" aria-pressed="false">Normal</button>
+          <button type="button" data-review-pose="1" aria-pressed="false">Hello</button>
+          <button type="button" data-review-pose="2" aria-pressed="false">Thinking</button>
+          <button type="button" data-review-pose="3" aria-pressed="false">Suspicious</button>
+        </div>
+        <p><a href="{{ '/' | relative_url }}">Back to the home page</a></p>
+      </section>
+      {% endif %}
       <div class="welcome-strip">Welcome to my little corner of the World Wide Web!</div>
       <div class="entrance-space">
         <p class="eyebrow">THE PERSONAL HOME PAGE OF</p>
@@ -22,7 +52,7 @@
         <div class="scene-tools" hidden>
           <button type="button" data-scene-mode="rotate" aria-pressed="false" title="Switch to rotating objects.">Rotate</button>
         </div>
-        <div class="entrance-avatar" data-avatar data-mode="landing" data-sprite="{{ '/images/avatar-rendered-poses.png' | relative_url }}" data-moustache="{{ '/images/avatar-moustache-edits.png' | relative_url }}" data-artwork-module="{{ '/assets/js/avatar-artwork.js?v=1' | relative_url }}">
+        <div class="entrance-avatar" data-avatar data-mode="landing" {% if page.avatar_style == 'nft' %}data-avatar-style="nft" data-sprite="{{ '/images/avatar-poses.png' | relative_url }}"{% else %}data-sprite="{{ '/images/avatar-rendered-poses.png' | relative_url }}" data-moustache="{{ '/images/avatar-moustache-edits.png' | relative_url }}"{% endif %} data-artwork-module="{{ '/assets/js/avatar-artwork.js?v=1' | relative_url }}">
           <img class="portrait" src="{{ site.author.avatar | prepend: '/images/' | relative_url }}" alt="Avatar of Miguel Suau" width="1060" height="1484">
           <div class="avatar-sprite" role="img" aria-label="Avatar of Miguel Suau" hidden></div>
         </div>
