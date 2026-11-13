@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="74" height="74" viewBox="0 0 74 74">
+  <defs><radialGradient id="ocean" cx="30%" cy="25%"><stop stop-color="#8280ff"/><stop offset=".7" stop-color="#3030bb"/><stop offset="1" stop-color="#000050"/></radialGradient><clipPath id="earth"><circle cx="37" cy="37" r="32"/></clipPath></defs>
+  <circle cx="37" cy="37" r="33" fill="url(#ocean)" stroke="#aaaaef"/>
+  <g clip-path="url(#earth)" fill="#8cf424"><path d="m14 9 22-2 6 8-10 4 1 10-11 7-4-8-10-3zM39 33l12-8 14 2 8 16-13 3-4 17-10 7-5-15-8-7zM10 42l11 3 9 13-8 9-12-5z"/></g>
+  <g fill="none" stroke="#ffffff" opacity=".16"><ellipse cx="37" cy="37" rx="17" ry="32"/><path d="M7 27h60M7 47h60M37 5v64"/></g>
+</svg>
