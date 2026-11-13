@@ -8,24 +8,24 @@ excerpt: "Research, selected talks, teaching and service"
 # Research
 ### [Breaking Habits: On the Role of the Advantage Function in Learning Causal State Representations](https://arxiv.org/abs/2506.11912)
 M. Suau. **Preprint. Presented at RLDM 2025**
-### [Bad Habits: Policy Confounding and Out-of-Trajectory Generalization in RL.](https://rlj.cs.umass.edu/2024/papers/Paper216.html) 
-M. Suau, M. T. J Spaan, F. A. Oliehoek. **RLC 2024. 
+### [Bad Habits: Policy Confounding and Out-of-Trajectory Generalization in RL.](https://rlj.org/papers/suau2024habits)
+M. Suau, M. T. J Spaan, F. A. Oliehoek. **RLC 2024.
 Outstanding Paper Award on Scientific Understanding in RL.**
 ### [Leveraging Factored State Representations for Enhanced Efficiency in Reinforcement Learning.](https://repository.tudelft.nl/islandora/object/uuid%3Ae19a0363-d9cf-4f33-8936-757c268f27a1)
 M.Suau. **Delft University of Technology. Ph.D. Thesis 2024.**
-### [Distributed Influence-Augmented Local Simulators for Parallel MARL in Large Networked Systems.](https://arxiv.org/abs/2207.00288) 
+### [Distributed Influence-Augmented Local Simulators for Parallel MARL in Large Networked Systems.](https://proceedings.neurips.cc/paper_files/paper/2022/hash/b5c8c1c117618267944b2617add0a766-Abstract-Conference.html)
 M. Suau, J. He, M. M. Çelikok, M. T. J Spaan, F. A. Oliehoek. **NeurIPS 2022.**
 ### [Influence-Augmented Local Simulators: A Scalable Solution for Fast Deep RL in Large Networked Systems.](https://proceedings.mlr.press/v162/suau22a.html)
-M. Suau, J. He, M. T. J Spaan, F. A. Oliehoek. **ICML 2022.** 
-### [Online Planning in POMDPs with Self-Improving Simulators.](https://www.ijcai.org/proceedings/2022/0642) 
+M. Suau, J. He, M. T. J Spaan, F. A. Oliehoek. **ICML 2022.**
+### [Online Planning in POMDPs with Self-Improving Simulators.](https://www.ijcai.org/proceedings/2022/0642)
 J. He, M. Suau, H. Baier, M. Kaisers, F. A. Oliehoek. **IJCAI 2022.**
-### [Speeding up Deep RL through Influence-augmented Local Simulators.](https://dl.acm.org/doi/abs/10.5555/3535850.3536093) 
+### [Speeding up Deep RL through Influence-augmented Local Simulators.](https://dl.acm.org/doi/abs/10.5555/3535850.3536093)
 M. Suau, J. He, M. T. J. Spaan, F. A. Oliehoek. **AAMAS 2022.**
-### [Influence-aware Memory Architectures for Deep Reinforcement Learning in POMDPs.](https://link.springer.com/article/10.1007/s00521-022-07691-7) 
+### [Influence-aware Memory Architectures for Deep Reinforcement Learning in POMDPs.](https://link.springer.com/article/10.1007/s00521-022-07691-7)
 M. Suau, E. Congeduti, J. He, R.A.N. Starre, A. Czechowski, F. A. Oliehoek. **NCAA 2022.**
 ### [Offline Contextual Bandits for Wireless Network Optimization](https://offline-rl-neurips.github.io/2021/pdf/18.pdf)
 M. Suau, A. Agapitos, D. Lynch, D. Farrell, M. Zhou, A. Milenovic. **Offline RL workshop, NeurIPS 2021.**
-### [Influence-augmented Online Planning for Complex Environments.](https://proceedings.neurips.cc/paper/2020/hash/2e6d9c6052e99fcdfa61d9b9da273ca2-Abstract.html) 
+### [Influence-augmented Online Planning for Complex Environments.](https://proceedings.neurips.cc/paper/2020/hash/2e6d9c6052e99fcdfa61d9b9da273ca2-Abstract.html)
 J. He, M. Suau, F.A. Oliehoek. **NeurIPS 2020.**
 
 # Selected talks
@@ -45,9 +45,9 @@ J. He, M. Suau, F.A. Oliehoek. **NeurIPS 2020.**
 
 ### Supervision:
 * Honours Project: Sven Holtrop, Lucas Crijns (2020)
-* Master thesis: Nele Albers (2019) 
+* Master thesis: Nele Albers (2019)
 * Bachelor's Thesis: Cian Jansen (2019)
-* Master thesis: Deniz Hofmeister (2018) 
+* Master thesis: Deniz Hofmeister (2018)
 
 ### Reviewing:
 * ICML 2021, 2022 (top reviewer), 2023.

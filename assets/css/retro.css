@@ -12,7 +12,7 @@ a:focus-visible { outline: 3px dotted #b00020; outline-offset: 4px; }
 .skip-link:focus { top: 8px; }
 .homepage { max-width: 1000px; margin: 0 auto; }
 .welcome-strip { margin-bottom: 9px; text-align: center; font-weight: bold; font-size: 16px; }
-.space-banner { position: relative; overflow: hidden; min-height: 144px; padding: 24px 130px; border: 4px ridge #eee; text-align: center; background: #000705 url("../../images/industrial-cyberspace.png?v=4") center 58% / cover no-repeat; color: #fff; }
+.space-banner { position: relative; overflow: hidden; min-height: 144px; padding: 24px 130px; border: 4px ridge #eee; text-align: center; background: #000705 url("../../images/industrial-cyberspace.png?v=5") center 58% / cover no-repeat; color: #fff; }
 .eyebrow { margin: 0 0 1px; color: #ffff74; font: bold 12px/1.6 "Courier New", monospace; letter-spacing: 3px; }
 .wordmark { position: relative; display: inline-block; color: #ffff00; font-family: "Lucida Console", Monaco, "Courier New", monospace; font-size: clamp(36px, 5.5vw, 66px); font-weight: bold; font-style: normal; line-height: 1.15; letter-spacing: -2px; transform: none; -webkit-text-stroke: .4px #fff6a0; text-shadow: 1px 1px #c5a000, 2px 2px #b59000, 3px 3px #a58000, 4px 4px #957000, 5px 5px #856000, 6px 6px #755000, 7px 7px #654300, 8px 8px #553800, 10px 12px 2px #000; }
 .banner-caption { margin: 12px 0 0; font-size: 16px; color: #fff; }
@@ -30,6 +30,16 @@ a:focus-visible { outline: 3px dotted #b00020; outline-offset: 4px; }
 .avatar-sprite[data-pose="1"] { background-position-x: 33.333333%; }
 .avatar-sprite[data-pose="2"] { background-position-x: 66.666667%; }
 .avatar-sprite[data-pose="3"] { background-position-x: 100%; }
+.has-voxel .portrait, .has-voxel .avatar-sprite { display: none !important; }
+.avatar-voxel { display: block; width: 156px; height: auto; aspect-ratio: 3 / 8; cursor: grab; touch-action: pan-y; image-rendering: pixelated; }
+.avatar-voxel:focus-visible { outline: 2px dotted #ffff00; outline-offset: 3px; }
+.industrial-world { position: absolute; inset: 0; display: block; width: 100%; height: 100%; z-index: 0; cursor: grab; }
+.live-world { background: #000604; }
+.live-world .entrance-avatar { visibility: hidden; }
+.scene-tools:not([hidden]) { position: absolute; bottom: 9px; right: 9px; z-index: 3; display: block; font: 12px "Courier New", monospace; }
+.scene-tools button, .scene-tools select { border: 2px outset #eee; border-radius: 0; background: #c0c0c0; color: #111; padding: 3px 6px; font: inherit; }
+.scene-tools button[aria-pressed="true"] { border-style: inset; background: #ffff90; }
+.scene-tools span { flex-basis: 100%; font: 12px "Times New Roman", serif; }
 .avatar-button { margin: 9px auto 0; padding: 4px 14px; border: 2px outset #eee; background: #c0c0c0; color: #000080; font: 14px "Times New Roman", Times, serif; cursor: pointer; }
 .avatar-button:not([hidden]) { display: block; }
 .avatar-button:active { border-style: inset; }
@@ -71,22 +81,22 @@ hr { height: 2px; border: 0; border-top: 1px solid #808080; border-bottom: 1px s
 .research-directory + h1 { margin-top: 0; }
 .landing-page { min-height: 100svh; display: grid; place-items: center; padding: 24px 16px; }
 .entrance { width: min(100%, 620px); text-align: center; }
-.entrance-space { position: relative; padding: 18px 20px 4px; border: 4px ridge #fff; background: #000705 url("../../images/industrial-cyberspace.png?v=4") center bottom / 100% 100% no-repeat; animation: frame-blink 4s steps(1, end) infinite; }
+.entrance-space { position: relative; padding: 18px 20px 4px; border: 4px ridge #fff; background: #000705 url("../../images/industrial-cyberspace.png?v=5") center bottom / 100% 100% no-repeat; animation: frame-blink 4s steps(1, end) infinite; }
 @keyframes frame-blink { 0%, 100% { border-color: #fff; } 50% { border-color: #ff26d9; } }
 .entrance-space .banner-caption { margin: 2px 0 0; font: 16px "Courier New", monospace; letter-spacing: 2px; }
-.scene-equations { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
-.scene-network { position: absolute; width: 150px; height: auto; right: 3%; top: 23%; opacity: .45; transform: perspective(280px) rotateY(-25deg) rotateZ(7deg); filter: drop-shadow(0 0 3px #174a43); }
+.scene-equations { z-index: 1; position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
 .equation { position: absolute; color: #8cabbc; opacity: .28; font: bold 17px/1.5 "Courier New", monospace; text-align: left; text-shadow: 1px 2px #00140d; }
 .equation-bayes { bottom: 3%; left: 5%; transform: rotate(-7deg); }
-.equation-causal { top: 47%; right: 3%; transform: rotate(10deg); }
+.equation-causal { top: 28%; right: 3%; transform: rotate(10deg); }
 .equation-bellman { top: 28%; left: 4%; max-width: 90%; font-size: 14px; transform: rotate(-3deg); }
 .fraction { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; line-height: 1.2; }
 .fraction > span:first-child { border-bottom: 1px solid currentColor; padding: 0 2px 2px; }
 .fraction > span:last-child { padding-top: 2px; }
 .entrance-avatar, .entrance-space .wordmark, .entrance-space .eyebrow, .entrance-space .banner-caption { position: relative; z-index: 1; }
 .entrance .wordmark { margin: 0 0 5px; font-size: clamp(36px, 6.9vw, 60px); }
-.entrance-avatar { display: flex; align-items: flex-end; justify-content: center; width: 120px; min-height: 416px; margin: 0 auto; }
-.entrance-avatar .portrait, .entrance-avatar .avatar-sprite { width: 120px; }
+.entrance-avatar { display: flex; align-items: flex-end; justify-content: center; width: 132px; min-height: 416px; margin: 0 auto; }
+.entrance-avatar .portrait, .entrance-avatar .avatar-sprite { width: 132px; }
+.entrance-avatar .avatar-voxel { width: 132px; }
 .entrance-directory { margin: 10px 0 0; padding: 12px; font-size: 21px; }
 .entrance-directory > span { margin: 0 22px; }
 .retro-social { display: flex; flex-wrap: wrap; gap: 14px 23px; justify-content: center; margin: 21px 0 0; padding: 0; list-style: none; }
@@ -108,6 +118,7 @@ hr { height: 2px; border: 0; border-top: 1px solid #808080; border-bottom: 1px s
   .photo-frame { float: left; margin: 0 16px 8px 0; }
   .portrait { width: 104px; height: auto; }
   .avatar-sprite { width: 104px; }
+  .avatar-voxel { width: 104px; }
   .avatar-button:not([hidden]) { display: inline-block; margin: 0 0 10px; }
   .profile h2 { margin: 0 0 4px; font-size: 21px; }
   .bio { margin-bottom: 4px; }
@@ -120,13 +131,13 @@ hr { height: 2px; border: 0; border-top: 1px solid #808080; border-bottom: 1px s
   .content > h1 { font-size: 22px; }
   .entrance-space { padding-top: 24px; }
   .equation { font-size: 12px; }
-  .scene-network { width: 94px; right: 1%; top: 24%; }
   .equation-bayes { left: 4%; bottom: 4%; }
-  .equation-causal { right: 2%; top: 49%; }
+  .equation-causal { right: 2%; top: 28%; }
   .equation-bellman { font-size: 10px; max-width: 92%; left: 4%; }
   .entrance .wordmark { font-size: clamp(30px, 8vw, 42px); }
-  .entrance-avatar { width: 96px; min-height: 336px; }
-  .entrance-avatar .avatar-sprite, .entrance-avatar .portrait { width: 96px; }
+  .entrance-avatar { width: 106px; min-height: 336px; }
+  .entrance-avatar .avatar-sprite, .entrance-avatar .portrait { width: 106px; }
+  .entrance-avatar .avatar-voxel { width: 106px; }
   .entrance-directory { font-size: 20px; }
   .entrance-directory > span { margin: 0 10px; }
   .retro-social { gap: 14px 18px; }
