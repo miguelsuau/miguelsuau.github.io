@@ -13,7 +13,7 @@ name                     : &name "Miguel Suau"
 description              : &description "PhD student at TU Delft"
 url                      : https://miguelsuau.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "miguelsuau.github.io"
+repository               : "miguelsuau/miguelsuau.github.io"
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
 breadcrumbs              : false # true, false (default)
 words_per_minute         : 160
@@ -81,7 +81,7 @@ analytics:
 # Site Author
 author:
   name             : "Miguel Suau, Ph.D."
-  avatar           : "profile.jpg"
+  avatar           : "avatar-pixel.png"
   bio              : "Research Scientist at Phaidra."
   location         : "Mallorca, Spain"
   employer         :
@@ -102,7 +102,7 @@ author:
   instagram        :
   impactstory      : #"https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
   lastfm           :
-  linkedin         :
+  linkedin         : "miguel-suau-289bb2117"
   orcid            : #"http://orcid.org/yourorcidurl"
   pinterest        :
   soundcloud       :
@@ -146,6 +146,7 @@ exclude:
   - package.json
   - tmp
   - vendor
+  - avatar-generation.md
 keep_files:
   - .git
   - .svn
