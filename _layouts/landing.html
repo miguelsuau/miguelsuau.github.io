@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ site.title | escape }} — Personal Home Page</title>
+    <meta name="description" content="{{ page.excerpt | escape }}">
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+    <link rel="icon" href="{{ '/images/retro-planet.svg' | relative_url }}" type="image/svg+xml">
+    <link rel="stylesheet" href="{{ '/assets/css/retro.css' | relative_url }}">
+    <script src="{{ '/assets/js/retro-avatar.js' | relative_url }}" defer></script>
+  </head>
+  <body class="landing-page">
+    <main class="entrance" aria-label="Miguel Suau's personal home page">
+      <div class="entrance-space">
+        <h1 class="wordmark">Miguel Suau<span class="wordmark-star" aria-hidden="true">✦</span></h1>
+        <div class="entrance-avatar" data-avatar data-mode="landing" data-sprite="{{ '/images/avatar-poses.png' | relative_url }}">
+          <img class="portrait" src="{{ site.author.avatar | prepend: '/images/' | relative_url }}" alt="Pixel-art avatar of Miguel Suau" width="1060" height="1484">
+          <div class="avatar-sprite" role="img" aria-label="Pixel-art avatar of Miguel Suau" hidden></div>
+        </div>
+      </div>
+      <nav class="directory entrance-directory" aria-label="Main navigation">
+        <a href="{{ '/about/' | relative_url }}">About</a><span aria-hidden="true"> | </span>
+        <a href="{{ '/research/' | relative_url }}">Research</a><span aria-hidden="true"> | </span>
+        <a href="{{ '/_pages/cv.pdf' | relative_url }}">CV <span class="file-type">[PDF]</span></a>
+      </nav>
+      {% include retro-social.html %}
+    </main>
+  </body>
+</html>
