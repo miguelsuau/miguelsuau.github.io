@@ -1,8 +1,8 @@
 # Avatar generation
 
-The live scene uses local Three.js modules in `assets/js/voxel-avatar.js`. The avatar has a solid head, body and articulated limbs. The four original face crops from `images/avatar-poses.png` are mapped without resampling onto the head front; its sides and back are solid voxel geometry. The sprite remains the fallback when WebGL is unavailable.
+The current avatar uses the exact user-approved four-pose rendered artwork in `images/avatar-rendered-poses.png`. `assets/js/avatar-model.js` preserves the artwork on the front of a shallow solid extrusion (0.44 scene units), with colored side walls and a charcoal rear silhouette. It is intentionally an extruded cutout rather than a newly modeled face. The original NFT artwork and earlier generated source images remain available. Pose changes, the one-second navigation lag and idle timing remain controlled by `assets/js/retro-avatar.js`.
 
-The pump, wind turbine, chiller and substation are interactive solid models sharing one perspective camera and floor plane. Drag moves an object across the floor; the single Rotate toggle changes dragging to rotation. Scrolling changes the selected object's depth. Chiller fans spin, the pump vibrates gently, and the substation occasionally sparks. The neural network has been removed. Bellman and intervention equations sit at the top, Bayes at the bottom, with the chiller on the back-right floor below the intervention equation.
+The pump, wind turbine, chiller, substation and small data center are interactive solid models sharing one perspective camera and floor plane. Drag moves an object across the floor; the single Rotate toggle changes dragging to rotation. Scrolling changes the selected object's depth. Chiller fans spin, the pump vibrates gently, the substation occasionally sparks, and the data center has softly blinking server status lights. The neural network has been removed. Bellman and intervention equations sit at the top, Bayes at the bottom, with the chiller on the back-right floor below the intervention equation.
 
 The industrial 3D background is saved as `images/industrial-cyberspace.png` and was also created with the built-in ImageGen tool. Its prompt is recorded below.
 
@@ -37,3 +37,10 @@ Use case: identity-preserve. Precise targeted EDIT to attached pixel-art sprite 
 ## Final prompt: requested mouth assignment
 
 Use case: identity-preserve. Precise tiny mouth-edit on a 4-pose pixel-art sprite sheet. IMAGE 1 is the current base/edit target. IMAGE 2 is an older version used ONLY as a mouth reference for character 4. Preserve IMAGE 1 pixel-for-pixel everywhere except the mouth regions of characters 3 and 4. User explicitly wants: (A) On IMAGE 1 character 3 (thinking hand at chin), use the downturned mouth currently on IMAGE 1 character 4. Copy its short horizontal black center with downward pixel corners, preserving the thinking character's eyes, raised eyebrow, head position and beard identity. (B) On IMAGE 1 character 4 (pointing, suspicious side-eye), RESTORE the exact crooked sideways mouth from IMAGE 2 character 4: a short asymmetric closed dark line slanting upward on the right, rather than the new symmetrical downturned frown. Preserve the suspicious eyes and eyebrows. Characters 1 neutral and 2 waving smile remain entirely unchanged. Only pose 2 smiles. Keep exact 1536x1024 transparent canvas and four equal 384px cells, identical figure placement, scale, outlines, colors, clothes, hair, full-body poses and baseline. No new details. True transparent background with alpha, no glow outside characters.
+
+
+## Final moustache correction
+
+Built-in ImageGen edit of the user-approved rendered four-pose sheet, saved as `images/avatar-moustache-edits.png`. Only the added brown moustache pixels in pose 3 (thinking) and pose 4 (suspicious) are composed into the original artwork by `assets/js/avatar-artwork.js`. The original two poses and all other source pixels remain intact.
+
+Prompt: Precise identity-preserving edit on a transparent 1536 × 1024 four-pose character sheet. Add dark-brown moustaches immediately below the noses of characters 3 and 4, matching characters 1 and 2. Preserve the thinking downturned closed mouth and suspicious crooked closed mouth; no new smiles. Keep all poses, hair, eyes, clothing, scale, composition, lighting and transparency unchanged.
