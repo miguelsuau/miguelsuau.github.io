@@ -89,9 +89,7 @@
       }, Math.min(2500, 30000 - dwell));
     }
     image.onload = () => {
-      sprite.style.backgroundImage = `url("${image.src}")`;
-      sprite.hidden = false;
-      portrait.hidden = true;
+      sprite.hidden = true;
       wireNavigationReactions(() => window.clearTimeout(greetingTimer), () => {
         visibleElapsed = 0;
         visibleSince = document.hidden ? null : performance.now();
@@ -152,9 +150,7 @@
 
   image.onload = () => {
     // Keep the original portrait as a fallback if the sheet cannot load.
-    sprite.style.backgroundImage = `url("${image.src}")`;
-    sprite.hidden = false;
-    portrait.hidden = true;
+    sprite.hidden = true;
     button.hidden = researchMode;
     if (!researchMode) button.addEventListener("click", () => changeAfterLag(1, true));
     document.querySelectorAll(".research-directory a").forEach(link => {
