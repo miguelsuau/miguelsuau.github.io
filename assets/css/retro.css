@@ -12,7 +12,7 @@ a:focus-visible { outline: 3px dotted #b00020; outline-offset: 4px; }
 .skip-link:focus { top: 8px; }
 .homepage { max-width: 1000px; margin: 0 auto; }
 .welcome-strip { margin-bottom: 9px; text-align: center; font-weight: bold; font-size: 16px; }
-.space-banner { position: relative; overflow: hidden; min-height: 144px; padding: 24px 130px; border: 4px ridge #eee; text-align: center; background: #000705 url("../../images/industrial-cyberspace.png?v=4") center 58% / cover no-repeat; color: #fff; }
+.space-banner { position: relative; overflow: hidden; min-height: 144px; padding: 24px 130px; border: 4px ridge #eee; text-align: center; background: #000705 url("../../images/industrial-cyberspace.png?v=5") center 58% / cover no-repeat; color: #fff; }
 .eyebrow { margin: 0 0 1px; color: #ffff74; font: bold 12px/1.6 "Courier New", monospace; letter-spacing: 3px; }
 .wordmark { position: relative; display: inline-block; color: #ffff00; font-family: "Lucida Console", Monaco, "Courier New", monospace; font-size: clamp(36px, 5.5vw, 66px); font-weight: bold; font-style: normal; line-height: 1.15; letter-spacing: -2px; transform: none; -webkit-text-stroke: .4px #fff6a0; text-shadow: 1px 1px #c5a000, 2px 2px #b59000, 3px 3px #a58000, 4px 4px #957000, 5px 5px #856000, 6px 6px #755000, 7px 7px #654300, 8px 8px #553800, 10px 12px 2px #000; }
 .banner-caption { margin: 12px 0 0; font-size: 16px; color: #fff; }
@@ -71,7 +71,7 @@ hr { height: 2px; border: 0; border-top: 1px solid #808080; border-bottom: 1px s
 .research-directory + h1 { margin-top: 0; }
 .landing-page { min-height: 100svh; display: grid; place-items: center; padding: 24px 16px; }
 .entrance { width: min(100%, 620px); text-align: center; }
-.entrance-space { position: relative; padding: 18px 20px 4px; border: 4px ridge #fff; background: #000705 url("../../images/industrial-cyberspace.png?v=4") center bottom / 100% 100% no-repeat; animation: frame-blink 4s steps(1, end) infinite; }
+.entrance-space { position: relative; padding: 18px 20px 4px; border: 4px ridge #fff; background: #000705 url("../../images/industrial-cyberspace.png?v=5") center bottom / 100% 100% no-repeat; animation: frame-blink 4s steps(1, end) infinite; }
 @keyframes frame-blink { 0%, 100% { border-color: #fff; } 50% { border-color: #ff26d9; } }
 .entrance-space .banner-caption { margin: 2px 0 0; font: 16px "Courier New", monospace; letter-spacing: 2px; }
 .scene-equations { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
@@ -85,8 +85,8 @@ hr { height: 2px; border: 0; border-top: 1px solid #808080; border-bottom: 1px s
 .fraction > span:last-child { padding-top: 2px; }
 .entrance-avatar, .entrance-space .wordmark, .entrance-space .eyebrow, .entrance-space .banner-caption { position: relative; z-index: 1; }
 .entrance .wordmark { margin: 0 0 5px; font-size: clamp(36px, 6.9vw, 60px); }
-.entrance-avatar { display: flex; align-items: flex-end; justify-content: center; width: 120px; min-height: 416px; margin: 0 auto; }
-.entrance-avatar .portrait, .entrance-avatar .avatar-sprite { width: 120px; }
+.entrance-avatar { display: flex; align-items: flex-end; justify-content: center; width: 132px; min-height: 416px; margin: 0 auto; }
+.entrance-avatar .portrait, .entrance-avatar .avatar-sprite { width: 132px; }
 .entrance-directory { margin: 10px 0 0; padding: 12px; font-size: 21px; }
 .entrance-directory > span { margin: 0 22px; }
 .retro-social { display: flex; flex-wrap: wrap; gap: 14px 23px; justify-content: center; margin: 21px 0 0; padding: 0; list-style: none; }
@@ -125,8 +125,8 @@ hr { height: 2px; border: 0; border-top: 1px solid #808080; border-bottom: 1px s
   .equation-causal { right: 2%; top: 49%; }
   .equation-bellman { font-size: 10px; max-width: 92%; left: 4%; }
   .entrance .wordmark { font-size: clamp(30px, 8vw, 42px); }
-  .entrance-avatar { width: 96px; min-height: 336px; }
-  .entrance-avatar .avatar-sprite, .entrance-avatar .portrait { width: 96px; }
+  .entrance-avatar { width: 106px; min-height: 336px; }
+  .entrance-avatar .avatar-sprite, .entrance-avatar .portrait { width: 106px; }
   .entrance-directory { font-size: 20px; }
   .entrance-directory > span { margin: 0 10px; }
   .retro-social { gap: 14px 18px; }
