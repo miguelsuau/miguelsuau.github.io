@@ -75,7 +75,7 @@
     let visibleSince = document.hidden ? null : performance.now();
     function scheduleGreeting(toggle = false) {
       window.clearTimeout(greetingTimer);
-      if (document.hidden || reducedMotion.matches || navigationPending) return;
+      if (document.hidden || reducedMotion.matches || navigationPending || frame.dataset.reviewPose !== undefined) return;
       const dwell = visibleElapsed + (visibleSince === null ? 0 : performance.now() - visibleSince);
       if (dwell >= 60000) {
         currentPose = 3;
@@ -96,6 +96,22 @@
         scheduleGreeting(true);
       }, Math.min(2500, 30000 - dwell));
     }
+    document.querySelectorAll('[data-review-pose]').forEach(control => {
+      control.addEventListener('click', () => {
+        window.clearTimeout(greetingTimer);
+        const value = control.dataset.reviewPose;
+        document.querySelectorAll('[data-review-pose]').forEach(other => other.setAttribute('aria-pressed', String(other === control)));
+        if (value === 'auto') {
+          delete frame.dataset.reviewPose;
+          currentPose = 0; sprite.dataset.pose = '0';
+          visibleElapsed = 0; visibleSince = document.hidden ? null : performance.now();
+          scheduleGreeting();
+        } else {
+          frame.dataset.reviewPose = value;
+          currentPose = Number(value); sprite.dataset.pose = value;
+        }
+      });
+    });
     image.onload = () => {
       sprite.style.backgroundImage = `url("${image.src}")`;
       sprite.hidden = false;

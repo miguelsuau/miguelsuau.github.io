@@ -1,5 +1,5 @@
 import * as THREE from './three.module.js';
-import { createAvatar } from './avatar-model.js?v=11';
+import { createAvatar } from './avatar-model.js?v=12';
 import { composeAvatarArtwork } from './avatar-artwork.js?v=1';
 
 // Solid models, one perspective camera, and ground-plane dragging.
@@ -104,8 +104,8 @@ async function start() {
     g.rotation.y=-.28;g.userData.serverLights=lights;return g;
   }
   const image=await new Promise((resolve,reject)=>{const i=new Image();i.onload=()=>resolve(i);i.onerror=reject;i.src=frame.dataset.sprite;});
-  const moustache=await new Promise((resolve)=>{const i=new Image();i.onload=()=>resolve(i);i.onerror=()=>resolve(null);i.src=frame.dataset.moustache;});
-  const person=createAvatar(THREE,{image:composeAvatarArtwork(image,moustache),object});
+  const moustache=frame.dataset.moustache?await new Promise((resolve)=>{const i=new Image();i.onload=()=>resolve(i);i.onerror=()=>resolve(null);i.src=frame.dataset.moustache;}):null;
+  const person=createAvatar(THREE,{image:composeAvatarArtwork(image,moustache),object,pixelated:frame.dataset.avatarStyle==='nft'});
   if(landing){pump();chiller();turbine();substation();dataCenter();const floor=new THREE.Mesh(new THREE.PlaneGeometry(220,220),material(0x020b04));floor.rotation.x=-Math.PI/2;floor.position.y=-.03;scene.add(floor);const grid=new THREE.GridHelper(220,110,0x00ff50,0x00ad2c);grid.position.y=.005;scene.add(grid);scene.fog=new THREE.FogExp2(0x000604,.015);}else{person.position.set(0,0,0);camera.position.set(0,4.5,17);camera.lookAt(0,4.5,0);}
   roots.forEach(g=>initial.set(g,{position:g.position.clone(),rotation:g.rotation.clone()}));
   host.appendChild(renderer.domElement);host.classList.add(landing?'live-world':'has-voxel');frame.dataset.voxelState='ready';

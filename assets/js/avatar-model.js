@@ -1,10 +1,11 @@
 // Preserve the approved four-pose artwork as a shallow, solid cutout.
-export function createAvatar(THREE, { image, object }) {
+export function createAvatar(THREE, { image, object, pixelated = false }) {
   const avatar = object('Avatar', [0, 0, 7]);
   avatar.scale.setScalar(.9);
   const poses = [], columns = 128, rows = 342;
   const cellWidth = image.width / 4, cellHeight = image.height;
-  const unit = 9.2 / 857, baseline = 954, depth = .44;
+  // Match the two sheets by visible body height and soles, not transparent padding.
+  const unit = 9.2 / (pixelated ? 822 : 857), baseline = pixelated ? 937 : 954, depth = .44;
   for (let pose = 0; pose < 4; pose++) {
     const canvas = document.createElement('canvas'); canvas.width = cellWidth; canvas.height = cellHeight;
     const context = canvas.getContext('2d');
@@ -33,7 +34,9 @@ export function createAvatar(THREE, { image, object }) {
     }
     const geometry = positions => { const g = new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(positions,3)); g.computeVertexNormals(); return g; };
     const texture = new THREE.CanvasTexture(canvas); texture.colorSpace = THREE.SRGBColorSpace;
-    texture.minFilter = THREE.LinearFilter; texture.magFilter = THREE.LinearFilter; texture.generateMipmaps = false;
+    texture.minFilter = pixelated ? THREE.NearestFilter : THREE.LinearFilter;
+    texture.magFilter = pixelated ? THREE.NearestFilter : THREE.LinearFilter;
+    texture.generateMipmaps = false;
     const g = new THREE.Group(); g.name = ['Normal','Hello','Thinking','Suspicious'][pose];
     const frontGeometry = geometry(front); frontGeometry.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));
     g.add(new THREE.Mesh(frontGeometry,new THREE.MeshBasicMaterial({map:texture,alphaTest:.55,toneMapped:false})));
