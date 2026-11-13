@@ -9,7 +9,7 @@
     <link rel="icon" href="{{ '/images/retro-robot.svg' | relative_url }}" type="image/svg+xml">
     <link rel="stylesheet" href="{{ '/assets/css/retro.css?v=7' | relative_url }}">
     <script src="{{ '/assets/js/retro-avatar.js?v=5' | relative_url }}" defer></script>
-    <script type="module" src="{{ '/assets/js/voxel-avatar.js?v=25' | relative_url }}"></script>
+    <script type="module" src="{{ '/assets/js/voxel-avatar.js?v=26' | relative_url }}"></script>
     {% if page.avatar_comparison %}
     <meta name="robots" content="noindex">
     <style>
@@ -52,7 +52,7 @@
         <div class="scene-tools" hidden>
           <button type="button" data-scene-mode="rotate" aria-pressed="false" title="Switch to rotating objects.">Rotate</button>
         </div>
-        <div class="entrance-avatar" data-avatar data-mode="landing" {% if page.avatar_style == 'nft' %}data-avatar-style="nft" data-sprite="{{ '/images/avatar-poses.png' | relative_url }}"{% else %}data-sprite="{{ '/images/avatar-rendered-poses.png' | relative_url }}" data-moustache="{{ '/images/avatar-moustache-edits.png' | relative_url }}"{% endif %} data-artwork-module="{{ '/assets/js/avatar-artwork.js?v=1' | relative_url }}">
+        <div class="entrance-avatar" data-avatar data-mode="landing" {% unless page.avatar_style == 'rendered' %}data-avatar-style="nft" data-sprite="{{ '/images/avatar-poses.png' | relative_url }}"{% else %}data-sprite="{{ '/images/avatar-rendered-poses.png' | relative_url }}" data-moustache="{{ '/images/avatar-moustache-edits.png' | relative_url }}"{% endunless %} data-artwork-module="{{ '/assets/js/avatar-artwork.js?v=1' | relative_url }}">
           <img class="portrait" src="{{ site.author.avatar | prepend: '/images/' | relative_url }}" alt="Avatar of Miguel Suau" width="1060" height="1484">
           <div class="avatar-sprite" role="img" aria-label="Avatar of Miguel Suau" hidden></div>
         </div>
