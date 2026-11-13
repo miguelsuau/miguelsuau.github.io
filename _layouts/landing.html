@@ -6,14 +6,18 @@
     <title>{{ site.title | escape }} — Personal Home Page</title>
     <meta name="description" content="{{ page.excerpt | escape }}">
     <link rel="canonical" href="{{ page.url | absolute_url }}">
-    <link rel="icon" href="{{ '/images/retro-planet.svg' | relative_url }}" type="image/svg+xml">
+    <link rel="icon" href="{{ '/images/retro-robot.svg' | relative_url }}" type="image/svg+xml">
     <link rel="stylesheet" href="{{ '/assets/css/retro.css' | relative_url }}">
     <script src="{{ '/assets/js/retro-avatar.js' | relative_url }}" defer></script>
   </head>
   <body class="landing-page">
     <main class="entrance" aria-label="Miguel Suau's personal home page">
+      <div class="welcome-strip">Welcome to my little corner of the World Wide Web!</div>
       <div class="entrance-space">
-        <h1 class="wordmark">Miguel Suau<span class="wordmark-star" aria-hidden="true">✦</span></h1>
+        <p class="eyebrow">THE PERSONAL HOME PAGE OF</p>
+        <h1 class="wordmark">Miguel Suau</h1>
+        <p class="banner-caption">machine teacher</p>
+        {% include retro-equations.html %}
         <div class="entrance-avatar" data-avatar data-mode="landing" data-sprite="{{ '/images/avatar-poses.png' | relative_url }}">
           <img class="portrait" src="{{ site.author.avatar | prepend: '/images/' | relative_url }}" alt="Pixel-art avatar of Miguel Suau" width="1060" height="1484">
           <div class="avatar-sprite" role="img" aria-label="Pixel-art avatar of Miguel Suau" hidden></div>
