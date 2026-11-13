@@ -72,6 +72,19 @@ hr { height: 2px; border: 0; border-top: 1px solid #808080; border-bottom: 1px s
 .site-footer p:first-of-type { font-weight: bold; }
 .site-footer p:first-of-type span { color: #000080; }
 .footer-small { font-size: 12px; }
+.research-directory { margin: 0 7px 14px; font-size: 14px; }
+.research-directory + h1 { margin-top: 0; }
+.landing-page { min-height: 100svh; display: grid; place-items: center; padding: 24px 16px; }
+.entrance { width: min(100%, 620px); text-align: center; }
+.entrance-space { padding: 18px 20px 4px; border: 4px ridge #eee; background: #000018 url("../../images/retro-stars.svg") repeat; }
+.entrance .wordmark { margin: 0 0 5px; font-size: clamp(46px, 7vw, 66px); }
+.entrance-avatar { width: 156px; min-height: 416px; margin: 0 auto; }
+.entrance-avatar .portrait { width: 156px; }
+.entrance-directory { margin: 10px 0 0; padding: 12px; font-size: 21px; }
+.entrance-directory > span { margin: 0 22px; }
+.retro-social { display: flex; flex-wrap: wrap; gap: 14px 23px; justify-content: center; margin: 21px 0 0; padding: 0; list-style: none; }
+.retro-social a { display: flex; flex-direction: column; align-items: center; gap: 5px; font-size: 13px; }
+.retro-social svg { width: 32px; height: 32px; image-rendering: pixelated; filter: drop-shadow(1px 1px 0 #fff); }
 @media (max-width: 700px) {
   body { padding: 14px 12px 24px; font-size: 17px; }
   .space-banner { min-height: 176px; padding: 23px 45px; }
@@ -98,6 +111,13 @@ hr { height: 2px; border: 0; border-top: 1px solid #808080; border-bottom: 1px s
   .profile-links li { margin: 3px 0; }
   .web-badges, .sidebar-note { display: none; }
   .content > h1 { font-size: 22px; }
+  .entrance-space { padding-top: 24px; }
+  .entrance .wordmark { font-size: 46px; }
+  .entrance-avatar { width: 126px; min-height: 336px; }
+  .entrance-avatar .avatar-sprite, .entrance-avatar .portrait { width: 126px; }
+  .entrance-directory { font-size: 20px; }
+  .entrance-directory > span { margin: 0 10px; }
+  .retro-social { gap: 14px 18px; }
 }
 @media (max-width: 380px) { .wordmark { font-size: 44px; } .banner-caption { font-size: 12px; } }
 @media print { body { background: #fff; padding: 0; } .space-banner, .welcome-strip, .directory, .profile, .site-footer, .back-to-top { display: none; } .page-columns { display: block; } .content > h1 { background: none; border: 0; padding-left: 0; } a, a:visited { color: #000; } }
