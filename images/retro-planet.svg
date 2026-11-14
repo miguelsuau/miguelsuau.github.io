@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="114" height="98" viewBox="0 0 114 98">
-  <defs><radialGradient id="planet" cx="30%" cy="26%"><stop stop-color="#bbffff"/><stop offset=".45" stop-color="#25dfe8"/><stop offset="1" stop-color="#004b99"/></radialGradient></defs>
-  <ellipse cx="57" cy="51" rx="53" ry="13" fill="none" stroke="#ff637c" stroke-width="9" transform="rotate(-23 57 51)"/>
-  <circle cx="57" cy="47" r="31" fill="url(#planet)" stroke="#71efff"/>
-  <path d="M8 70Q54 81 105 30" fill="none" stroke="#ff7684" stroke-width="8"/>
-  <path d="M8 72Q55 82 107 31" fill="none" stroke="#ffff77" stroke-width="2"/>
-</svg>
