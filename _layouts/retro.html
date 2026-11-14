@@ -8,8 +8,8 @@
     <link rel="canonical" href="{{ page.url | absolute_url }}">
     <link rel="icon" href="{{ '/images/retro-robot.svg' | relative_url }}" type="image/svg+xml">
     <link rel="stylesheet" href="{{ '/assets/css/retro.css?v=7' | relative_url }}">
-    <script src="{{ '/assets/js/retro-avatar.js?v=5' | relative_url }}" defer></script>
-    <script type="module" src="{{ '/assets/js/voxel-avatar.js?v=26' | relative_url }}"></script>
+    <script src="{{ '/assets/js/retro-avatar.js?v=6' | relative_url }}" defer></script>
+    <script type="module" src="{{ '/assets/js/voxel-avatar.js?v=28' | relative_url }}"></script>
   </head>
   <body id="top">
     <a class="skip-link" href="#main">Skip to content</a>
@@ -27,7 +27,7 @@
         <aside class="profile" aria-label="Profile and contact links">
           <div class="panel-heading">machineteacher</div>
           <div class="profile-inner">
-            <div class="photo-frame avatar-frame" data-avatar data-avatar-style="nft" data-mode="{% if page.permalink == '/research/' %}research{% else %}about{% endif %}" data-initial-pose="{% if page.permalink == '/research/' %}2{% else %}1{% endif %}" data-sprite="{{ '/images/avatar-poses.png' | relative_url }}" data-artwork-module="{{ '/assets/js/avatar-artwork.js?v=1' | relative_url }}">
+            <div class="photo-frame avatar-frame" data-avatar data-avatar-style="nft" data-mode="{% if page.permalink == '/research/' %}research{% else %}about{% endif %}" data-initial-pose="{% if page.permalink == '/research/' %}2{% else %}1{% endif %}" data-sprite="{{ '/images/avatar-nft-beard.png' | relative_url }}">
               <img class="portrait" src="{{ site.author.avatar | prepend: '/images/' | relative_url }}" alt="Avatar of Miguel Suau" width="1060" height="1484">
               <div class="avatar-sprite" role="img" aria-label="Pixel avatar of Miguel Suau" hidden></div>
             </div>
