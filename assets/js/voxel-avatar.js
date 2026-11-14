@@ -1,6 +1,5 @@
 import * as THREE from './three.module.js';
-import { createAvatar } from './avatar-model.js?v=12';
-import { composeAvatarArtwork } from './avatar-artwork.js?v=1';
+import { createAvatar } from './avatar-model.js?v=13';
 
 // Solid models, one perspective camera, and ground-plane dragging.
 const frame = document.querySelector('[data-avatar]');
@@ -34,7 +33,7 @@ async function start() {
   function substation(){const g=object('Substation',[-5.6,0,-15]);box(g,0,.12,0,5.5,.24,3.8,0x979f98);box(g,-.3,1.5,0,2.7,2.5,1.7,0x929993);for(let i=0;i<13;i++)box(g,-1.6+i*.21,1.5,1.0,.07,2.1,.45,0xb5b9ae);for(const x of [-1.2,-.2,.8]){cylinder(g,x,3.2,0,.12,1.2,0x553224);for(let j=0;j<5;j++)cylinder(g,x,2.8+j*.18,0,.22,.07,0x80604c);}for(const x of [-2.2,2.2]){beam(g,[x,.25,-1],[x,4.6,-1],.13,0xc3ccc2);beam(g,[x-.3,.25,-1],[x+.3,4.6,-1],.06,0xb9c2ba);beam(g,[x+.3,.25,-1],[x-.3,4.6,-1],.06,0xb9c2ba);}beam(g,[-2.2,4.6,-1],[2.2,4.6,-1],.13,0xc3ccc2);for(const x of [-1.2,-.2,.8])beam(g,[x,4.6,-1],[x,3.7,0],.035,0x78817a);box(g,1.8,1.1,.3,.7,1.8,.8,0xbcc3b9);for(const z of [-1.8,1.8]){for(const x of [-2.6,-1.3,0,1.3,2.6])beam(g,[x,.2,z],[x,1.4,z],.045,0xb4c6b4);for(let y=.4;y<1.45;y+=.2)beam(g,[-2.6,y,z],[2.6,y,z],.018,0x8ca18b);}g.rotation.y=-.17;const sparks=new THREE.Group();for(const x of [-1.2,-.2,.8]){const points=[];for(let k=0;k<7;k++)points.push(new THREE.Vector3(x+Math.sin(k*4.3)*.12,3.7+k*.12,-k*.1));sparks.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(points),new THREE.LineBasicMaterial({color:0xaaddff,transparent:true,opacity:.95,depthWrite:false})));}sparks.visible=false;g.add(sparks);g.userData.sparks=sparks;return g;}
   function dataCenter(){
     // An open toy-like data hall, with two rack rows and a shared liquid loop.
-    const g=object('Liquid-cooled data hall',[6.6,0,5.5]);
+    const g=object('Liquid-cooled data hall',[5.9,0,5.5]);
     const floor=0xb6c8c3,rack=0x364b57,front=0x152d3c;
     const supply=0x22b9e2,returnLine=0xec7650;
     box(g,0,.12,0,7,.24,5.2,0x647b7c);
@@ -92,11 +91,10 @@ async function start() {
       cylinder(g,x,.47,-1.49,.11,.60,color,'z');
       cylinder(g,x,2.48,-1.20,.17,.11,0xc0d0c6);
     }
-    g.rotation.y=-.60;g.scale.setScalar(.9);g.userData.serverLights=lights;return g;
+    g.rotation.y=-.60;g.scale.setScalar(1.08);g.userData.serverLights=lights;return g;
   }
   const image=await new Promise((resolve,reject)=>{const i=new Image();i.onload=()=>resolve(i);i.onerror=reject;i.src=frame.dataset.sprite;});
-  const moustache=frame.dataset.moustache?await new Promise((resolve)=>{const i=new Image();i.onload=()=>resolve(i);i.onerror=()=>resolve(null);i.src=frame.dataset.moustache;}):null;
-  const person=createAvatar(THREE,{image:composeAvatarArtwork(image,moustache),object,pixelated:frame.dataset.avatarStyle==='nft'});
+  const person=createAvatar(THREE,{image,object});
   if(landing){pump();chiller();turbine();substation();dataCenter();const floor=new THREE.Mesh(new THREE.PlaneGeometry(220,220),material(0x020b04));floor.rotation.x=-Math.PI/2;floor.position.y=-.03;scene.add(floor);const grid=new THREE.GridHelper(220,110,0x00ff50,0x00ad2c);grid.position.y=.005;scene.add(grid);scene.fog=new THREE.FogExp2(0x000604,.015);}else{person.position.set(0,0,0);camera.position.set(0,4.5,17);camera.lookAt(0,4.5,0);}
   // Only the ground grid fades into the horizon; equipment keeps its colours at any depth.
   roots.forEach(g=>g.traverse(part=>{
