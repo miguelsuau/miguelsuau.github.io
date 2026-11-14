@@ -1,54 +1,16 @@
-# Avatar generation
-
-The current avatar uses the exact user-approved four-pose rendered artwork in `images/avatar-rendered-poses.png`. `assets/js/avatar-model.js` preserves the artwork on the front of a shallow solid extrusion (0.44 scene units), with colored side walls and a charcoal rear silhouette. It is intentionally an extruded cutout rather than a newly modeled face. The original NFT artwork and earlier generated source images remain available. Pose changes, the one-second navigation lag and idle timing remain controlled by `assets/js/retro-avatar.js`.
-
-The pump, wind turbine, chiller, substation and small data center are interactive solid models sharing one perspective camera and floor plane. Drag moves an object across the floor; the single Rotate toggle changes dragging to rotation. Scrolling changes the selected object's depth. Chiller fans spin, the pump vibrates gently, the substation occasionally sparks, and the data center has softly blinking server status lights. The neural network has been removed. Bellman and intervention equations sit at the top, Bayes at the bottom, with the chiller on the back-right floor below the intervention equation.
-
-The industrial 3D background is saved as `images/industrial-cyberspace.png` and was also created with the built-in ImageGen tool. Its prompt is recorded below.
-
-## Industrial background prompt
-
-Latest chiller position adjustment:
-
-Use case: precise-object-edit. Move ONLY the small off-white/teal chiller horizontally to the RIGHT in this background image. It is currently above the center-left near x43%, y36%. Move its center to x56%, y36%, keeping exactly the same size, vertical position, equipment appearance and perspective. Its bottom should remain around42% height. The old location must become clean dark background/grid again. Keep x69%-98%, y43%-61% unobstructed for a website equation. Preserve all other pixels as closely as possible: wind turbine at left, blue centrifugal pump at lower left, foreground substation at lower right, green perspective grid, dark upper void and lighting. Leave the central lower space clear for an avatar overlay. No text, no equations, no people or robots. All four machines must remain visible. Same output dimensions.
-
-Final placement edit: move the small chiller above the avatar toward center-left (center x=43%, y=36%, bottom around42%), leaving the right-middle area empty for the intervention equation. Preserve the pump, wind turbine and foreground substation, floor perspective and rendering style. No people, text or equations in the raster background.
-
-Final composition (chiller at back, substation at front):
-
-Use case: stylized-concept. Generate a COMPLETE NEW FLATTENED background illustration using the attached image as a visual style and equipment reference. Output must visibly contain ALL FOUR industrial objects described below, not an empty grid. Same early-1990s CGI aesthetic, black-green void and luminous green perspective grid, portrait-ish 1240x1120 composition. Place a blue centrifugal pump with motor in the foreground LEFT (center x=15%,y=76%), a small white wind turbine in middle distance LEFT (nacelle x=16%,y=42%,base y=63%), a SMALL off-white and teal industrial CHILLER in the BACK RIGHT (center x=83%,y=49%,width18%,base y=58%), and a LARGER ELECTRICAL POWER SUBSTATION in the FRONT RIGHT (center x=83%,y=77%,width26%,base y=90%). The substation is closer and larger than the chiller, with a transformer tank, gray ribbed cooling fins, several ceramic insulator stacks, overhead metal busbar gantries and a little fence; keep it easy to recognize. The CHILLER sits clearly BEHIND the substation, farther toward the horizon, and visibly has two circular ventilation fans. Keep the pump and wind turbine recognizable and consistent with the reference. All FOUR objects must be rendered as part of the final image. Keep the central 40% of image width (x30%-70%) completely clear for an avatar overlay, and top22% empty dark space for heading. Green perspective grid vanishes at center around38% height. Simple shaded geometry, slightly glossy plastic and metal, limited colors, old raytraced soft shadows and a touch of grain. No text, no equations, no labels, no logo, no robot, no person, no avatar, no neural network. Preserve clear dark areas for overlaid website elements.
-
-Use case: stylized-concept. Asset type: background plate for a 1990s personal homepage, portrait-ish 1240x1120 composition. Reference image is ONLY for early CGI atmosphere and green perspective-grid floor; do not include its character or any people. Create an intentionally primitive 1995 CGI industrial cyberspace with dark black-green void, a luminous green wireframe floor stretching to a central vanishing point at 37% image height, simple low-poly industrial machines and soft awkward old raytraced shadows. Place a blue centrifugal pump with a small motor at the far LEFT lower area (center x=15%, y=72%), a boxy off-white and teal industrial chiller with visible ventilation fans at the far RIGHT lower area (center x=84%, y=73%), and a small white three-blade wind turbine at far LEFT middle distance (center x=16%, nacelle y=40%, base y=61%). Machines must be clearly recognizable and modest in scale, toy-like early computer graphics rather than photographic. IMPORTANT COMPOSITION: central 40% width from x=30% to x=70% stays completely EMPTY from top to bottom because a full-body pixel avatar will be overlaid there. Top 22% stays almost entirely empty dark void for heading text. Machine parts and blades must remain entirely in outer side areas, not cross central avatar space. Chiller footprint width about20% of image, pump18%, turbine rotor20%. Green grid should be bright enough to give depth but subdued enough behind foreground text. Slight grain, simple shaded polygons, glossy blue metal and pale gray equipment, limited colors, dark scene, plausible depth/perspective, retro low-poly videogame rendering. NO text, NO labels, NO equations, NO logos, NO people, NO characters, NO robots, NO planets, NO stars. This is one complete coherent scene with all machines standing on the grid at different distances.
-
-Created with the built-in ImageGen tool, using the supplied pixel-art portrait as the identity reference. The final sheet is `images/avatar-poses.png`; the original portrait is `images/avatar-pixel.png`.
-
-## Initial prompt
-
-Create one transparent 1536 × 1024 sprite sheet with exactly four equal-width columns. Extend the reference character to a full body, preserving curly brown hair, beard, tan skin, blue eyes, charcoal open jacket and white T-shirt; add dark trousers and sneakers. Keep every figure at the same scale and baseline, fully inside its own cell. Left to right: relaxed standing, one-hand wave, hand-on-chin thinking, pointing right. Crisp chunky pixel art, black outlines, limited warm colors. Actual transparent alpha, no labels, grid, backdrop, shadows or text.
-
-## Expression refinement
-
-Preserve the canvas, four columns, poses, scale and identity. First face neutral, small closed mouth and relaxed eyebrows. Second face happily smiling and waving; only this pose smiles. Third face thinking, eyes up and to the side, one raised eyebrow, closed mouth. Fourth face suspicious, narrowed side-eye and asymmetric eyebrows, closed downturned mouth. No smile or teeth in poses one, three or four.
-
-## Mouth refinement prompt
-
-Use case: identity-preserve. Precise targeted EDIT to attached pixel-art sprite sheet. Change ONLY the mouths and nearby beard pixels on characters 3 and 4. Everything else stays EXACTLY unchanged: characters 1 and 2 entirely unchanged, all poses, head positions and sizes, all body pixels, four equal 384px columns on 1536x1024 canvas, transparent background, eye and eyebrow expressions on characters 3 and 4. Third thinking character: replace the crooked squiggly mouth with a SIMPLE SMALL CLOSED STRAIGHT horizontal dark mouth line, centered under nose, about 2 or 3 chunky pixels wide, no smile, no extra marks below or around it. Restore a natural tidy brown moustache and beard around it matching character 1. Fourth suspicious character: replace the thick sideways zigzag with a clean subtle DOWN-TURNED CLOSED mouth, a short horizontal dark center with one-pixel downward ends, 3 chunky pixels wide total, no smile, no teeth, no diagonal zigzag. Tidy brown moustache and beard matching character 1, while retaining suspicious side-eye and raised eyebrow. Keep the mouths restrained and human, simple classic pixel-art expressions that remain readable at small sizes. No new details elsewhere, no text, transparent alpha.
-
-## Final prompt: requested mouth assignment
-
-Use case: identity-preserve. Precise tiny mouth-edit on a 4-pose pixel-art sprite sheet. IMAGE 1 is the current base/edit target. IMAGE 2 is an older version used ONLY as a mouth reference for character 4. Preserve IMAGE 1 pixel-for-pixel everywhere except the mouth regions of characters 3 and 4. User explicitly wants: (A) On IMAGE 1 character 3 (thinking hand at chin), use the downturned mouth currently on IMAGE 1 character 4. Copy its short horizontal black center with downward pixel corners, preserving the thinking character's eyes, raised eyebrow, head position and beard identity. (B) On IMAGE 1 character 4 (pointing, suspicious side-eye), RESTORE the exact crooked sideways mouth from IMAGE 2 character 4: a short asymmetric closed dark line slanting upward on the right, rather than the new symmetrical downturned frown. Preserve the suspicious eyes and eyebrows. Characters 1 neutral and 2 waving smile remain entirely unchanged. Only pose 2 smiles. Keep exact 1536x1024 transparent canvas and four equal 384px cells, identical figure placement, scale, outlines, colors, clothes, hair, full-body poses and baseline. No new details. True transparent background with alpha, no glow outside characters.
-
-
-## Final moustache correction
-
-Built-in ImageGen edit of the user-approved rendered four-pose sheet, saved as `images/avatar-moustache-edits.png`. Only the added brown moustache pixels in pose 3 (thinking) and pose 4 (suspicious) are composed into the original artwork by `assets/js/avatar-artwork.js`. The original two poses and all other source pixels remain intact.
-
-Prompt: Precise identity-preserving edit on a transparent 1536 × 1024 four-pose character sheet. Add dark-brown moustaches immediately below the noses of characters 3 and 4, matching characters 1 and 2. Preserve the thinking downturned closed mouth and suspicious crooked closed mouth; no new smiles. Keep all poses, hair, eyes, clothing, scale, composition, lighting and transparency unchanged.
-
+# Avatar artwork
 
 ## Selected NFT avatar — connected beard correction
 
 The original pixel/NFT avatar is now the default on the homepage and inner pages.
-Final asset: `images/avatar-nft-beard.png`. Generated with the built-in GPT Image tool (not the CLI). The original `images/avatar-poses.png` is retained.
+Final asset: `images/avatar-nft-beard.png`. Generated with the built-in GPT Image tool (not the CLI). The uncorrected NFT sheet was removed; its history remains in Git.
 
 Final edit prompt: Correct only the beard on the third thinking face and fourth suspicious face. Match the first neutral and second hello faces: one broad, solid, continuous medium-brown pixel-art full beard wrapping the cheeks and jaw and continuing across the upper lip. The hair above the lip must join the beard on both sides of the mouth; do not add an isolated moustache. Keep the existing downturned thinking mouth and asymmetric suspicious mouth visible and preserve their expressions. Keep the first two characters, poses, clothing, eyes, hair, silhouettes, spacing, pixel style, transparency and 1536×1024 dimensions unchanged.
+
+The selected artwork is rendered as a shallow solid cutout by `assets/js/avatar-model.js`. It uses nearest-neighbor filtering, a 0.44-unit extrusion, and the four existing pose states.
+
+`images/avatar-pixel.png` is the fallback portrait. `images/industrial-cyberspace.png` remains the inner-page banner and non-WebGL scene fallback. The equipment itself is modeled in Three.js.
+
+## Retained rendered alternative
+
+The user requested keeping the 3D-looking rendered avatar as a backup. `images/avatar-rendered-poses.png`, `images/avatar-moustache-edits.png`, and `assets/js/avatar-artwork.js` are retained, with the rendered preview at `/avatar-comparison/` and NFT preview at `/avatar-comparison/nft/`. The main homepage, About and Research use the corrected NFT artwork.
