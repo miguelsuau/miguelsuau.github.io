@@ -44,3 +44,11 @@ Use case: identity-preserve. Precise tiny mouth-edit on a 4-pose pixel-art sprit
 Built-in ImageGen edit of the user-approved rendered four-pose sheet, saved as `images/avatar-moustache-edits.png`. Only the added brown moustache pixels in pose 3 (thinking) and pose 4 (suspicious) are composed into the original artwork by `assets/js/avatar-artwork.js`. The original two poses and all other source pixels remain intact.
 
 Prompt: Precise identity-preserving edit on a transparent 1536 × 1024 four-pose character sheet. Add dark-brown moustaches immediately below the noses of characters 3 and 4, matching characters 1 and 2. Preserve the thinking downturned closed mouth and suspicious crooked closed mouth; no new smiles. Keep all poses, hair, eyes, clothing, scale, composition, lighting and transparency unchanged.
+
+
+## Selected NFT avatar — connected beard correction
+
+The original pixel/NFT avatar is now the default on the homepage and inner pages.
+Final asset: `images/avatar-nft-beard.png`. Generated with the built-in GPT Image tool (not the CLI). The original `images/avatar-poses.png` is retained.
+
+Final edit prompt: Correct only the beard on the third thinking face and fourth suspicious face. Match the first neutral and second hello faces: one broad, solid, continuous medium-brown pixel-art full beard wrapping the cheeks and jaw and continuing across the upper lip. The hair above the lip must join the beard on both sides of the mouth; do not add an isolated moustache. Keep the existing downturned thinking mouth and asymmetric suspicious mouth visible and preserve their expressions. Keep the first two characters, poses, clothing, eyes, hair, silhouettes, spacing, pixel style, transparency and 1536×1024 dimensions unchanged.
