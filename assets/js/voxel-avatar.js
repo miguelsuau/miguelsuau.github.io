@@ -1,5 +1,6 @@
 import * as THREE from './three.module.js';
 import { createAvatar } from './avatar-model.js?v=13';
+import { composeAvatarArtwork } from './avatar-artwork.js?v=1';
 
 // Solid models, one perspective camera, and ground-plane dragging.
 const frame = document.querySelector('[data-avatar]');
@@ -94,7 +95,8 @@ async function start() {
     g.rotation.y=-.60;g.scale.setScalar(1.08);g.userData.serverLights=lights;return g;
   }
   const image=await new Promise((resolve,reject)=>{const i=new Image();i.onload=()=>resolve(i);i.onerror=reject;i.src=frame.dataset.sprite;});
-  const person=createAvatar(THREE,{image,object});
+  const moustache=frame.dataset.moustache?await new Promise((resolve)=>{const i=new Image();i.onload=()=>resolve(i);i.onerror=()=>resolve(null);i.src=frame.dataset.moustache;}):null;
+  const person=createAvatar(THREE,{image:composeAvatarArtwork(image,moustache),object,pixelated:frame.dataset.avatarStyle==='nft'});
   if(landing){pump();chiller();turbine();substation();dataCenter();const floor=new THREE.Mesh(new THREE.PlaneGeometry(220,220),material(0x020b04));floor.rotation.x=-Math.PI/2;floor.position.y=-.03;scene.add(floor);const grid=new THREE.GridHelper(220,110,0x00ff50,0x00ad2c);grid.position.y=.005;scene.add(grid);scene.fog=new THREE.FogExp2(0x000604,.015);}else{person.position.set(0,0,0);camera.position.set(0,4.5,17);camera.lookAt(0,4.5,0);}
   // Only the ground grid fades into the horizon; equipment keeps its colours at any depth.
   roots.forEach(g=>g.traverse(part=>{
