@@ -3,15 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ site.title | escape }} — Personal Home Page</title>
-    <meta name="description" content="{{ page.excerpt | escape }}">
-    <link rel="canonical" href="{{ page.url | absolute_url }}">
+    {% include metadata.html %}
     <link rel="icon" href="{{ '/images/retro-robot.svg' | relative_url }}" type="image/svg+xml">
     <link rel="stylesheet" href="{{ '/assets/css/retro.css?v=7' | relative_url }}">
     <script src="{{ '/assets/js/retro-avatar.js?v=6' | relative_url }}" defer></script>
     <script type="module" src="{{ '/assets/js/voxel-avatar.js?v=28' | relative_url }}"></script>
     {% if page.avatar_comparison %}
-    <meta name="robots" content="noindex">
     <style>
       .avatar-review { margin: 0 0 16px; padding: 12px; border: 3px ridge white; background: #c0c0c0; color: black; }
       .avatar-review h2 { margin: 0 0 8px; font: bold 19px 'Courier New', monospace; }

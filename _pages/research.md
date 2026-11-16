@@ -2,7 +2,11 @@
 layout: retro
 permalink: /research/
 title: "Research"
-excerpt: "Research, selected talks, teaching and service"
+excerpt: "Miguel Suau’s publications on reinforcement learning, causal representations, and multi-agent systems, plus selected talks, teaching, and academic service."
+redirect_from:
+  - /publications/
+  - /talks/
+  - /teaching/
 ---
 
 # Research

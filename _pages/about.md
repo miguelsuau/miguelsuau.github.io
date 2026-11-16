@@ -1,9 +1,8 @@
 ---
 layout: retro
 permalink: /about/
-title: ""
-excerpt: "About me"
-author_profile: true
+title: "About"
+excerpt: "About Miguel Suau, Research Lead at Phaidra and TU Delft PhD in Artificial Intelligence, working on reinforcement learning and industrial systems."
 redirect_from: 
   - /about.html
 ---
