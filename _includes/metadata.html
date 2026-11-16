@@ -1,0 +1,37 @@
+{% capture default_title %}{{ page.title }} — {{ site.title }}{% endcapture %}
+{% assign seo_title = page.seo_title | default: default_title | strip %}
+{% assign description = page.excerpt | default: site.description | strip_html | normalize_whitespace %}
+<title>{{ seo_title | escape }}</title>
+<meta name="description" content="{{ description | escape }}">
+<meta name="author" content="{{ site.name | escape }}">
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+{% if page.noindex or page.avatar_comparison %}<meta name="robots" content="noindex">{% endif %}
+{% if site.google_site_verification %}<meta name="google-site-verification" content="{{ site.google_site_verification | escape }}">{% endif %}
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{ site.title | escape }}">
+<meta property="og:title" content="{{ seo_title | escape }}">
+<meta property="og:description" content="{{ description | escape }}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:image" content="{{ '/images/avatar-pixel.png' | absolute_url }}">
+<meta property="og:image:alt" content="Pixel avatar of Miguel Suau">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@{{ site.author.twitter }}">
+{% if page.url == '/' or page.url == '/about/' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": {{ '/#miguel-suau' | absolute_url | jsonify }},
+  "name": {{ site.name | jsonify }},
+  "alternateName": "machineteacher",
+  "url": {{ '/' | absolute_url | jsonify }},
+  "image": {{ '/images/avatar-pixel.png' | absolute_url | jsonify }},
+  "sameAs": [
+    "https://www.linkedin.com/in/{{ site.author.linkedin }}/",
+    "https://github.com/{{ site.author.github }}",
+    "https://x.com/{{ site.author.twitter }}",
+    {{ site.author.googlescholar | jsonify }}
+  ]
+}
+</script>
+{% endif %}
