@@ -35,6 +35,7 @@ a:focus-visible { outline: 3px dotted #b00020; outline-offset: 4px; }
 .avatar-voxel:focus-visible { outline: 2px dotted #ffff00; outline-offset: 3px; }
 .industrial-world { position: absolute; inset: 0; display: block; width: 100%; height: 100%; z-index: 0; cursor: grab; }
 .scene-preview { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; pointer-events: none; }
+.scene-preview ~ .entrance-avatar { visibility: hidden; }
 .live-world .scene-preview { display: none; }
 .live-world { background: #000604; }
 .live-world .entrance-avatar { visibility: hidden; }
