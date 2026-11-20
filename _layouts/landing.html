@@ -4,10 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% include metadata.html %}
+    {% unless page.avatar_comparison %}
+    <link rel="preload" as="image" href="{{ '/images/scene-preview.webp' | relative_url }}" fetchpriority="high">
+    {% endunless %}
+    <link rel="preload" as="image" href="{{ '/images/avatar-nft-beard.png' | relative_url }}">
+    <link rel="modulepreload" href="{{ '/assets/js/three.module.js' | relative_url }}">
+    <link rel="modulepreload" href="{{ '/assets/js/three.core.js' | relative_url }}">
     <link rel="icon" href="{{ '/images/retro-robot.svg' | relative_url }}" type="image/svg+xml">
-    <link rel="stylesheet" href="{{ '/assets/css/retro.css?v=7' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/retro.css?v=8' | relative_url }}">
     <script src="{{ '/assets/js/retro-avatar.js?v=6' | relative_url }}" defer></script>
-    <script type="module" src="{{ '/assets/js/voxel-avatar.js?v=28' | relative_url }}"></script>
+    <script type="module" src="{{ '/assets/js/voxel-avatar.js?v=29' | relative_url }}"></script>
     {% if page.avatar_comparison %}
     <style>
       .avatar-review { margin: 0 0 16px; padding: 12px; border: 3px ridge white; background: #c0c0c0; color: black; }
@@ -42,6 +48,9 @@
       {% endif %}
       <div class="welcome-strip">Welcome to my little corner of the World Wide Web!</div>
       <div class="entrance-space">
+        {% unless page.avatar_comparison %}
+        <img class="scene-preview" src="{{ '/images/scene-preview.webp' | relative_url }}" alt="Miguel’s avatar with a pump, chiller, wind turbine, substation, and liquid-cooled data hall" width="918" height="830" fetchpriority="high" decoding="sync">
+        {% endunless %}
         <p class="eyebrow">THE PERSONAL HOME PAGE OF</p>
         <h1 class="wordmark">Miguel Suau</h1>
         <p class="banner-caption">machine teacher</p>
