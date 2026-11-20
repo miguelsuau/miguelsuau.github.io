@@ -26,7 +26,7 @@
           <div class="panel-heading">machineteacher</div>
           <div class="profile-inner">
             <div class="photo-frame avatar-frame" data-avatar data-avatar-style="nft" data-mode="{% if page.permalink == '/research/' %}research{% else %}about{% endif %}" data-initial-pose="{% if page.permalink == '/research/' %}2{% else %}1{% endif %}" data-sprite="{{ '/images/avatar-nft-beard.png' | relative_url }}">
-              <img class="portrait" src="{{ site.author.avatar | prepend: '/images/' | relative_url }}" alt="Avatar of Miguel Suau" width="1060" height="1484">
+              <img class="portrait" hidden src="{{ site.author.avatar | prepend: '/images/' | relative_url }}" alt="Avatar of Miguel Suau" width="1060" height="1484">
               <div class="avatar-sprite" role="img" aria-label="Pixel avatar of Miguel Suau" hidden></div>
             </div>
             <h2>{{ site.author.name }}</h2>
